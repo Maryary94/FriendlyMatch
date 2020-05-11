@@ -1,5 +1,5 @@
 # FriendlyMatch
-
+<!-- ola -->
 <!-- O que estava quado foi criado no firebase  -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
