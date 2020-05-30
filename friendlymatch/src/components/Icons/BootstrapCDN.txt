@@ -1,0 +1,71 @@
+https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+
+
+ellipsis-v --> https://fontawesome.com/icons/ellipsis-v?style=solid
+<i class="fas fa-ellipsis-v"></i>
+
+bars --> https://fontawesome.com/icons/bars?style=solid
+<i class="fas fa-bars"></i>
+
+calendar-alt --> https://fontawesome.com/icons/calendar-alt?style=regular
+<i class="far fa-calendar-alt"></i>
+
+user-plus --> https://fontawesome.com/icons/user-plus?style=solid
+<i class="fas fa-user-plus"></i>
+
+user-alt --> https://fontawesome.com/icons/user-alt?style=solid
+<i class="fas fa-user-alt"></i>
+
+user-circle --> https://fontawesome.com/icons/user-circle?style=regular
+<i class="far fa-user-circle"></i>
+
+times (cruz) --> https://fontawesome.com/icons/times?style=solid
+<i class="fas fa-times"></i> 
+
+plus --> https://fontawesome.com/icons/plus?style=solid
+<i class="fas fa-plus"></i>
+
+chevron-left --> https://fontawesome.com/icons/chevron-left?style=solid
+<i class="fas fa-chevron-left"></i>
+
+check --> https://fontawesome.com/icons/check?style=solid
+<i class="fas fa-check"></i>
+
+paper-plane --> https://fontawesome.com/icons/paper-plane?style=regular
+<i class="far fa-paper-plane"></i>
+
+cog (settings) --> https://fontawesome.com/icons/cog?style=solid
+<i class="fas fa-cog"></i>
+
+chevron-right --> https://fontawesome.com/icons/chevron-right?style=solid
+<i class="fas fa-chevron-right"></i>
+
+facebook-f --> https://fontawesome.com/icons/facebook-f?style=brands~
+<i class="fab fa-facebook-f"></i>
+
+facebook-messenger --> https://fontawesome.com/icons/facebook-messenger?style=brands
+<i class="fab fa-facebook-messenger"></i>
+
+instagram --> https://fontawesome.com/icons/instagram?style=brands
+<i class="fab fa-instagram"></i>
+
+envelope --> https://fontawesome.com/icons/envelope?style=regular
+<i class="far fa-envelope"></i>
+
+twitter --> https://fontawesome.com/icons/twitter?style=brands
+<i class="fab fa-twitter"></i>
+
+google-plus-g --> https://fontawesome.com/icons/google-plus-g?style=brands
+<i class="fab fa-google-plus-g"></i>
+
+link --> https://fontawesome.com/icons/link?style=solid
+<i class="fas fa-link"></i>
+
+hourglass-half --> https://fontawesome.com/icons/hourglass-half?style=solid
+<i class="fas fa-hourglass-half"></i>
+
+credit-card --> https://fontawesome.com/icons/credit-card?style=regular
+<i class="far fa-credit-card"></i>
+
+camera --> https://fontawesome.com/icons/camera?style=solid
+<i class="fas fa-camera"></i>

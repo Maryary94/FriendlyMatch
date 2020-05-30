@@ -1,9 +1,9 @@
-import React from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import React from "react";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 
-import Login from './Views/Auth/Login';
+import Login from "./views/Auth/Login";
 
 function App() {
   return (
@@ -12,7 +12,11 @@ function App() {
       {/* <Route path="/login" exact render={(props) => <Login {...props} />} />
       <Route path="/login" exact render={(props) => <Login {...props} />} />
       <Route path="/login" exact render={(props) => <Login {...props} />} /> */}
-      <Route path="/" exact render={(props) => <div>Isto é o home</div>} />
+      <Route
+        path="/"
+        exact
+        render={(props) => <div>Isto é a apresentação do projecto (Home)</div>}
+      />
       <Redirect to="/" />
     </Switch>
   );
