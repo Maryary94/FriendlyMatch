@@ -49,7 +49,7 @@ facebook-messenger --> https://fontawesome.com/icons/facebook-messenger?style=br
 instagram --> https://fontawesome.com/icons/instagram?style=brands
 <i class="fab fa-instagram"></i>
 
-envelope --> https://fontawesome.com/icons/envelope?style=regular
+envelope --> https://fontawesome.com/icons/envelope?style=regular 
 <i class="far fa-envelope"></i>
 
 twitter --> https://fontawesome.com/icons/twitter?style=brands
