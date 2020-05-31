@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Input(props) {
   return (
@@ -9,6 +9,7 @@ export default function Input(props) {
           type={props.type}
           className="form-control"
           id={props.id}
+          placeholder={props.placeholder}
           aria-describedby="emailHelp"
         />
         <small id="emailHelp" className="form-text text-muted">

@@ -1,0 +1,14 @@
+.header {
+  text-align: center;
+  background: #fff1dc;
+  /* width: 100%; */
+  height: 8vh;
+}
+.flexFormat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.text {
+  text-align: center !important;
+}

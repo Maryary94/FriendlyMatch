@@ -13,6 +13,7 @@ export default function Login() {
           <Input
             type="text"
             id="idUnico"
+            // placeholder="Test"
             label="Isto é uma label personalizada on the fly"
             smallText="Isto é o texto small"
           />
