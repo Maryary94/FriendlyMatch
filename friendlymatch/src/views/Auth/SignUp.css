@@ -4,6 +4,9 @@
   justify-content: center;
   /* height: 100vh; */
 }
+.container {
+  margin-top: 10px;
+}
 h3 {
   font-size: 1.17em;
   margin-top: 1.9em;
@@ -14,8 +17,7 @@ h3 {
 .divHorizontal {
   vertical-align: middle;
 }
-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+Button {
+  width: 100%;
 }

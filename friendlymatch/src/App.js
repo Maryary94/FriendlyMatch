@@ -2,18 +2,179 @@ import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
 import "./App.css";
-
+// Auth
 import Login from "./views/Auth/Login";
 import SignUp from "./views/Auth/SignUp";
+import SignIn from "./views/Auth/SignIn";
+// Feedback
+import CreateFeedback from "./views/Feedback/Create";
+import SendedFeedback from "./views/Feedback/Sended";
+// Game
+import CreateGame from "./views/Game/Create";
+import MyGames from "./views/Game/MyGames";
+import GameAddPlayers from "./views/Game/AddPlayers";
+// In Game
+import Info from "./views/Game/InGame/Info";
+import Payments from "./views/Game/InGame/Payments";
+import InGamePlayers from "./views/Game/InGame/Players";
+import Statistics from "./views/Game/InGame/Statistics";
+// Group
+import AddMembers from "./views/Group/AddMembers";
+import AddPhotoGroup from "./views/Group/AddPhoto";
+import CreateGroup from "./views/Group/Create";
+import MyGroups from "./views/Group/MyGroups";
+// InGroup
+import Games from "./views/Group/InGroup/Games";
+import GroupMembers from "./views/Group/InGroup/Members";
+import Ranking from "./views/Group/InGroup/Ranking";
+// Notifications
+import Notifications from "./views/Notifications/Notifications";
+// Players
+import Players from "./views/Players/Players";
+// Profile
+import AddPhotoProfile from "./views/Profile/AddPhoto";
+import EditProfile from "./views/Profile/Edit";
+import Profile from "./views/Profile/Profile";
+// Settings
+import Settings from "./views/Settings/Settings";
+import SettingsNotifications from "./views/Settings/Notifications";
+import Language from "./views/Settings/Language";
+// API
+import Calendar from "./views/API/Calendar";
+import Field from "./views/API/Field";
+import NearMe from "./views/API/NearMe";
 
 function App() {
   return (
     <Switch>
-      <Route path="/login" exact render={(props) => <Login {...props} />} />
+      {/* Auth */}
+      <Route path="/Login" exact render={(props) => <Login {...props} />} />
       <Route path="/SignUp" exact render={(props) => <SignUp {...props} />} />
-      {/* <Route path="/login" exact render={(props) => <Login {...props} />} />
-      <Route path="/login" exact render={(props) => <Login {...props} />} />
-      <Route path="/login" exact render={(props) => <Login {...props} />} /> */}
+      <Route path="/SignIn" exact render={(props) => <SignIn {...props} />} />
+
+      {/* Feedback */}
+      <Route
+        path="/CreateFeedback"
+        exact
+        render={(props) => <CreateFeedback {...props} />}
+      />
+      <Route
+        path="/SendedFeedback"
+        exact
+        render={(props) => <SendedFeedback {...props} />}
+      />
+
+      {/* Game */}
+      <Route
+        path="/CreateGame"
+        exact
+        render={(props) => <CreateGame {...props} />}
+      />
+      <Route path="/MyGames" exact render={(props) => <MyGames {...props} />} />
+      <Route
+        path="/GameAddPlayers"
+        exact
+        render={(props) => <GameAddPlayers {...props} />}
+      />
+
+      {/* In Game */}
+      <Route path="/Info" exact render={(props) => <Info {...props} />} />
+      <Route
+        path="/Payments"
+        exact
+        render={(props) => <Payments {...props} />}
+      />
+      <Route
+        path="/InGamePlayers"
+        exact
+        render={(props) => <InGamePlayers {...props} />}
+      />
+      <Route
+        path="/Statistics"
+        exact
+        render={(props) => <Statistics {...props} />}
+      />
+
+      {/* Group */}
+      <Route
+        path="/AddMembers"
+        exact
+        render={(props) => <AddMembers {...props} />}
+      />
+      <Route
+        path="/AddPhotoGroup"
+        exact
+        render={(props) => <AddPhotoGroup {...props} />}
+      />
+      <Route
+        path="/CreateGroup"
+        exact
+        render={(props) => <CreateGroup {...props} />}
+      />
+      <Route
+        path="/MyGroups"
+        exact
+        render={(props) => <MyGroups {...props} />}
+      />
+
+      {/* InGroup */}
+      <Route path="/Games" exact render={(props) => <Games {...props} />} />
+      <Route
+        path="/GroupMembers"
+        exact
+        render={(props) => <GroupMembers {...props} />}
+      />
+      <Route path="/Ranking" exact render={(props) => <Ranking {...props} />} />
+
+      {/* Notifications */}
+      <Route
+        path="/Notifications"
+        exact
+        render={(props) => <Notifications {...props} />}
+      />
+
+      {/* Players */}
+      <Route path="/Players" exact render={(props) => <Players {...props} />} />
+
+      {/* Profile */}
+      <Route
+        path="/AddPhotoProfile"
+        exact
+        render={(props) => <AddPhotoProfile {...props} />}
+      />
+      <Route
+        path="/EditProfile"
+        exact
+        render={(props) => <EditProfile {...props} />}
+      />
+      <Route path="/Profile" exact render={(props) => <Profile {...props} />} />
+
+      {/* Settings */}
+      <Route
+        path="/Settings"
+        exact
+        render={(props) => <Settings {...props} />}
+      />
+      <Route
+        path="/SettingsNotifications"
+        exact
+        render={(props) => <SettingsNotifications {...props} />}
+      />
+      <Route
+        path="/Language"
+        exact
+        render={(props) => <Language {...props} />}
+      />
+
+      {/* API */}
+      <Route
+        path="/Calendar"
+        exact
+        render={(props) => <Calendar {...props} />}
+      />
+      <Route path="/Field" exact render={(props) => <Field {...props} />} />
+      <Route path="/NearMe" exact render={(props) => <NearMe {...props} />} />
+
       <Route
         path="/"
         exact

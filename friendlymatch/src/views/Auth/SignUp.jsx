@@ -15,13 +15,14 @@ export default function SignUp() {
         <form className="container">
           <Input type="text" id="firstName" placeholder="First Name" />
           <Input type="text" id="lastName" placeholder="Last Name" />
-          <Input type="email" id="email" placeholder="Email ou maybe Phone!" />
+          <Input type="number" id="phone" placeholder="Email ou maybe Phone!" />
           <divHorizontal>
             <Input type="text" id="a" placeholder="Date of Birth" disabled />
             <Input type="date" id="birthday" />
           </divHorizontal>
+
           <div>
-            <Button name="Coisa" type="submit" btnColor="success" />
+            <Button name="Continue" type="submit" btnColor="success" />
           </div>
         </form>
       </div>
