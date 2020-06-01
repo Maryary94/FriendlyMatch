@@ -1,14 +1,26 @@
 .header {
+  display: flex;
   text-align: center;
   background: #fff1dc;
-  /* width: 100%; */
+  justify-content: space-between;
   height: 8vh;
+  align-items: center;
+}
+.text {
+  display: flex;
+  align-items: center;
 }
 .flexFormat {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.text {
-  text-align: center !important;
+.iconLeft {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.iconFontAwesome {
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
