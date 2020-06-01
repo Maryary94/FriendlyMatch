@@ -9,6 +9,7 @@
 .text {
   display: flex;
   align-items: center;
+  font-size: 1.2em;
 }
 .flexFormat {
   display: flex;

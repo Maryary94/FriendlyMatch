@@ -17,7 +17,7 @@ export default function SignUp() {
 
       <h3 className="title">Welcome Registration</h3>
 
-      <div className="formContainer">
+      <div className="formContainerSignUp">
         <form className="container">
           <Input type="text" id="firstName" placeholder="First Name" />
           <Input type="text" id="lastName" placeholder="Last Name" />
