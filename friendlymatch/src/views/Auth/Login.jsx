@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Login.css";
+import logo from "../../img/logo.png";
 
 import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
@@ -8,25 +9,18 @@ import Button from "../../components/Form/Button/Button";
 export default function Login() {
   return (
     <>
-      <div className="formContainer">
+      <div className="formContainerLogin">
         <form className="container">
-          <Input
-            type="text"
-            id="idUnico"
-            // placeholder="Test"
-            label="Isto é uma label personalizada on the fly"
-            smallText="Isto é o texto small"
-          />
-          <Input
-            type="password"
-            id="password"
-            label="Password"
-            smallText="Isto é o texto small para a password"
-          />
-          <div>
-            <Button name="Coisa" type="submit" btnColor="success" />
-            <Button name="Cenas" type="submit" btnColor="danger" />
-          </div>
+          <img className="image" src={logo} alt="..." class="img-thumbnail" />
+
+          <Input type="number" id="phone" placeholder="Phone" />
+
+          <Button name="Enter" type="submit" btnColor="success" />
+          <p className="terms">
+            By signin up you agree with the{" "}
+            <a href="http://localhost:3000/Login">Terms of Service</a> and{" "}
+            <a href="http://localhost:3000/Login">Privacy Policy</a>
+          </p>
         </form>
       </div>
     </>

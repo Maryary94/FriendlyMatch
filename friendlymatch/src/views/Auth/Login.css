@@ -1,6 +1,17 @@
-.formContainer {
+.formContainerLogin {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* height: 100vh; */
+  height: 100vh;
+}
+.image {
+  display: flex;
+  align-items: center;
+}
+.terms {
+  font-size: 0.7em;
+  justify-content: center;
+}
+.termsOfService {
+  font-size: 0.7em;
 }

@@ -39,6 +39,9 @@ import Profile from "./views/Profile/Profile";
 import Settings from "./views/Settings/Settings";
 import SettingsNotifications from "./views/Settings/Notifications";
 import Language from "./views/Settings/Language";
+// Statistics
+import Evaluation from "./views/Statistics/Evaluation";
+import Thanks from "./views/Statistics/Thanks";
 // API
 import Calendar from "./views/API/Calendar";
 import Field from "./views/API/Field";
@@ -165,6 +168,14 @@ function App() {
         exact
         render={(props) => <Language {...props} />}
       />
+
+      {/* API */}
+      <Route
+        path="/Evaluation"
+        exact
+        render={(props) => <Evaluation {...props} />}
+      />
+      <Route path="/Thanks" exact render={(props) => <Thanks {...props} />} />
 
       {/* API */}
       <Route

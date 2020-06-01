@@ -21,7 +21,7 @@ export default function SignUp() {
         <form className="container">
           <Input type="text" id="firstName" placeholder="First Name" />
           <Input type="text" id="lastName" placeholder="Last Name" />
-          <Input type="number" id="phone" placeholder="Email ou maybe Phone!" />
+          <Input type="number" id="phone" placeholder="Phone!" />
           <div className="divHorizontal">
             <Input
               type="text"

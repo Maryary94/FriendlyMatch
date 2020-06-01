@@ -9,16 +9,14 @@ import Header from "../../components/Header/Header";
 export default function SingIn() {
   return (
     <>
-      <Header></Header>
-      <h3>Welcome Registration</h3>
+      <Header iconLeft={"fas fa-times"} />
+      <h3 className="titleIn">Welcome Back</h3>
       <div className="formContainerSignIn">
         <form className="container">
-          <Input
-            type="number"
-            id="pin"
-            placeholder="Pin"
-            smallText="Send Again"
-          />
+          <Input type="number" id="pin" placeholder="Pin" />
+          <a className="sendAgain" href="http://localhost:3000/SignIn">
+            Send again
+          </a>
 
           <div>
             <Button name="Continue" type="submit" btnColor="success" />
