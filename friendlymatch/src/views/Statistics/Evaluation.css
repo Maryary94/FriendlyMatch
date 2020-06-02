@@ -4,7 +4,14 @@
   justify-content: center;
   height: 90vh;
 }
-.thankYou {
-  margin-bottom: 70%;
-  text-align: center;
+
+.colImagem {
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.colRadioButtons {
 }

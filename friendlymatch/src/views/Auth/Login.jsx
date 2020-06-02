@@ -11,7 +11,12 @@ export default function Login() {
     <>
       <div className="formContainerLogin">
         <form className="container">
-          <img className="image" src={logo} alt="..." class="img-thumbnail" />
+          <img
+            className="image"
+            src={logo}
+            alt="Logo FriendlyMatch"
+            class="img-thumbnail"
+          />
 
           <Input type="number" id="phone" placeholder="Phone" />
 
