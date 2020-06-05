@@ -3,7 +3,7 @@ import "./Evaluation.css";
 import images from "../../img/images.png";
 
 import Button from "../../components/Form/Button/Button";
-import Input from "../../components/Form/Input/Input";
+// import Input from "../../components/Form/Input/Input";
 import Header from "../../components/Header/Header";
 
 export default function Thanks() {
