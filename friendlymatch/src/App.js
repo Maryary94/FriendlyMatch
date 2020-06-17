@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
 import "./App.css";
@@ -46,8 +46,26 @@ import Thanks from "./views/Statistics/Thanks";
 import Calendar from "./views/API/Calendar";
 import Field from "./views/API/Field";
 import NearMe from "./views/API/NearMe";
+import { withFirebase } from "./services";
 
-function App() {
+function App({firebase, history}) {
+  let authUser = useRef();
+
+  useEffect(()=>{
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.database().ref("Users").child(user.uid).on("value", (snapshot)=>{
+            if(!snapshot.exists())
+              history.push("/SignUp");
+            else
+              history.push("/MyGames");
+            });
+          authUser.current = user;
+      }
+    });
+  }, [firebase, history])
+
+
   return (
     <Switch>
       {/* Auth */}
@@ -196,4 +214,4 @@ function App() {
   );
 }
 
-export default withRouter(App);
+export default withRouter(withFirebase(App));

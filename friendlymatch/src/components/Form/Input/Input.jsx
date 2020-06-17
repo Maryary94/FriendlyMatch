@@ -13,6 +13,7 @@ export default function Input(props) {
           placeholder={props.placeholder}
           aria-describedby="emailHelp"
           disabled={props.disabled}
+          onChange={props.onChange}
         />
         <small id="emailHelp" className="form-text text-muted">
           {props.smallText}

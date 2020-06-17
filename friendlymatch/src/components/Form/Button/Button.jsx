@@ -3,7 +3,7 @@ import React from "react";
 export default function Button(props) {
   return (
     <>
-      <button type={props.type} className={`btn btn-${props.btnColor}`}>
+      <button id={props.id} type={props.type} className={`btn btn-${props.btnColor}`}>
         {props.name}
       </button>
     </>

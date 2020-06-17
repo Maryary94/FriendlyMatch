@@ -5,54 +5,73 @@ import "./SignUp.css";
 import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import Header from "../../components/Header/Header";
+import { withFirebase } from "../../services";
+import { useEffect } from "react";
 
-const positionField = [
-  {
-    value: " Lateral Esquerdo",
-    label: " Lateral Esquerdo",
-  },
-  {
-    value: "Lateral Direito",
-    label: "Lateral Direito",
-  },
-  {
-    value: " Ponta de Lança",
-    label: " Ponta de Lança",
-  },
-  {
-    value: "Extermo Direito",
-    label: "Extermo Direito",
-  },
-  {
-    value: " Extermo Esquerdo",
-    label: " Extermo Esquerdo",
-  },
-  {
-    value: "Guarda Redes",
-    label: "Guarda Redes",
-  },
-  {
-    value: " Médio",
-    label: " Médio",
-  },
-  {
-    value: "Defesa Direito",
-    label: "Defesa Direito",
-  },
-  {
-    value: "Defesa Esquerdo",
-    label: "Defesa Esquerdo",
-  },
-  {
-    value: "Defesa Central",
-    label: "Defesa Central",
-  },
-];
-export default function SignUp() {
-  const [Position, setPosition] = React.useState("Position");
-  const handleChangePosition = (event) => {
-    setPosition(event.target.value);
-  };
+function SignUp({firebase}) {
+  let firstName, lastName, phone, birthday, position;
+  const positionField = [
+    {
+      value: " Lateral Esquerdo",
+      label: " Lateral Esquerdo",
+    },
+    {
+      value: "Lateral Direito",
+      label: "Lateral Direito",
+    },
+    {
+      value: " Ponta de Lança",
+      label: " Ponta de Lança",
+    },
+    {
+      value: "Extermo Direito",
+      label: "Extermo Direito",
+    },
+    {
+      value: " Extermo Esquerdo",
+      label: " Extermo Esquerdo",
+    },
+    {
+      value: "Guarda Redes",
+      label: "Guarda Redes",
+    },
+    {
+      value: " Médio",
+      label: " Médio",
+    },
+    {
+      value: "Defesa Direito",
+      label: "Defesa Direito",
+    },
+    {
+      value: "Defesa Esquerdo",
+      label: "Defesa Esquerdo",
+    },
+    {
+      value: "Defesa Central",
+      label: "Defesa Central",
+    },
+  ];
+
+
+  useEffect(()=>{
+    console.log(firebase.auth().currentUser);
+  }, [firebase])
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    console.log("handleSignUp", firebase.auth().currentUser);
+    firebase.database().ref("Users").child(firebase.auth().currentUser.uid).update({
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      birthday: birthday,
+      position: position,
+    }, (result)=>{
+      console.log("result", result);
+    })
+  }
+
   return (
     <>
       <Header
@@ -64,10 +83,10 @@ export default function SignUp() {
       <h3 className="title">Welcome Registration</h3>
 
       <div className="formContainerSignUp">
-        <form className="container">
-          <Input type="text" id="firstName" placeholder="First Name" />
-          <Input type="text" id="lastName" placeholder="Last Name" />
-          <Input type="number" id="phone" placeholder="Phone Number" />
+        <form className="container" action="#" onSubmit={handleSignUp}>
+          <Input type="text" id="firstName" placeholder="First Name" onChange={e => firstName = e.target.value} />
+          <Input type="text" id="lastName" placeholder="Last Name" onChange={e => lastName = e.target.value} />
+          <Input type="text" id="phone" placeholder="Phone Number" onChange={e => phone = e.target.value} />
           <div className="divHorizontal">
             <Input
               type="text"
@@ -75,61 +94,14 @@ export default function SignUp() {
               placeholder="Date of Birth"
               disabled={true}
             />
-            <Input type="date" id="birthday" />
+            <Input type="date" id="birthday" onChange={e => birthday = e.target.value}/>
           </div>
-          {/*
-          <div className="dropdown mt-2">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenu2"
-              data-toggle="dropdown"
-            >
-              Dropdown
-            </button>
-
-            <div className="dropdown-menu " aria-labelledby="dropdownMenu2">
-              <button className="dropdown-item" type="button">
-                Defesa Central
-              </button>
-              <button className="dropdown-item" type="button">
-                Defesa Direito
-              </button>
-              <button className="dropdown-item" type="button">
-                Defesa Esquerdo
-              </button>
-
-              <button className="dropdown-item" type="button">
-                Médio
-              </button>
-              <button className="dropdown-item" type="button">
-                Guarda Redes
-              </button>
-              <button className="dropdown-item" type="button">
-                Lateral Esquerdo
-              </button>
-              <button className="dropdown-item" type="button">
-                Lateral Direito
-              </button>
-              <button className="dropdown-item" type="button">
-                Ponta de Lança
-              </button>
-              <button className="dropdown-item" type="button">
-                Extermo Direito
-              </button>
-              <button className="dropdown-item" type="button">
-                Extermo Esquerdo
-              </button>
-            </div>
-          </div>
-          */}
           <div className="selectPosicao">
             <TextField
               id="select-posicao"
               select
               label="   "
-              value={Position}
-              onChange={handleChangePosition}
+              onChange={e => position = e.target.value}
               helperText="Escolha o posição que deseja jogar"
             >
               {positionField.map((option) => (
@@ -147,3 +119,5 @@ export default function SignUp() {
     </>
   );
 }
+
+export default withFirebase(SignUp);
