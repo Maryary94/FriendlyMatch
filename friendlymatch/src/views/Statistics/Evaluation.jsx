@@ -1,18 +1,32 @@
 import React from "react";
 import "./Evaluation.css";
-import images from "../../img/images.png";
+//import images from "../../img/images.png";
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  Divider,
+} from "@material-ui/core";
 
 import Button from "../../components/Form/Button/Button";
 // import Input from "../../components/Form/Input/Input";
 import Header from "../../components/Header/Header";
 
-export default function Thanks() {
+export default function Evaluation() {
+  const [value, setValue] = React.useState("statistics");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
   return (
     <>
       <Header title="Statistics" iconLeft={"fas fa-chevron-left"} />
       <div className="formContainerEvaluation">
-        <div class="container">
+        <div className="container">
           <div className="row">
+            {/*
             <div className="colImagem">
               <img
                 className="Player"
@@ -21,137 +35,29 @@ export default function Thanks() {
                 class="img-thumbnail"
               />
             </div>
-            <div class="colRadioButtons">
-              <p> Name of the player</p>
-              {/* radio-buttons*/}
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline1"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline1">
-                  1
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  2
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  3
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  4
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  5
-                </label>
-              </div>
-            </div>
+            */}
+            <FormControl component="fieldset" className="FormWidth">
+              <FormLabel component="legend">
+                Statistics (pode ser o nome do atleta)
+              </FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="gender1"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="1" />
+                <FormControlLabel value="2" control={<Radio />} label="2" />
+                <FormControlLabel value="3" control={<Radio />} label="3" />
+                <FormControlLabel value="4" control={<Radio />} label="4" />
+                <FormControlLabel value="5" control={<Radio />} label="5" />
+              </RadioGroup>
+            </FormControl>
           </div>
-          {/* TESTE FOR MORE radio-buttons*/}
-          <div className="row">
-            <div className="colImagem">
-              <img
-                className="Player"
-                src={images}
-                alt="player "
-                class="img-thumbnail"
-              />
-            </div>
-            <div class="colRadioButtons">
-              <p> Name of the player</p>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline1"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline1">
-                  1
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  2
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  3
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  4
-                </label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="customRadioInline2"
-                  name="customRadioInline1"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadioInline2">
-                  5
-                </label>
-              </div>
-            </div>
-          </div>
+          <Divider />
         </div>
-        {/* TESTE FOR MORE radio-buttons*/}
+
         <form className="container">
           <Button
             className="buttonThanks"

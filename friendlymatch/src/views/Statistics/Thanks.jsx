@@ -11,14 +11,14 @@ export default function Thanks() {
       <div className="formContainerThanks">
         <form className="container">
           <h3 className="thankYou">Thanks for your help.</h3>
-          <Button
-            className="buttonThanks"
-            name="Save"
-            type="submit"
-            btnColor="success"
-          />
         </form>
       </div>
+      <Button
+        className="buttonThanks"
+        name="Save"
+        type="submit"
+        btnColor="success"
+      />
     </>
   );
 }

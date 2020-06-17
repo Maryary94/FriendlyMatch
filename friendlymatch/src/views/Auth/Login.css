@@ -4,9 +4,9 @@
   justify-content: center;
   height: 100vh;
 }
-.image {
-  display: flex;
-  align-items: center;
+.logo_friendlyMatch {
+  margin-left: 15%;
+  width: 65%;
 }
 .terms {
   font-size: 0.7em;
