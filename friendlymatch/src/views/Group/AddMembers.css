@@ -1,0 +1,13 @@
+.AddPlayersGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.WaysToSendInvitationsGroup {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10%;
+}
+.ContinueButtonGroup {
+  margin-top: 20%;
+}
