@@ -15,9 +15,12 @@ export default function Create() {
       <div className="CreateGroupName">
         <p>
           <b>Create New Group</b>
-          <Input id="GroupName" type="text" placeholder="Name of the Group" />
         </p>
-        <UpdateImage></UpdateImage>
+        <Input id="GroupName" type="text" placeholder="Name of the Group" />
+        <div className="rowCreateGroup">
+          <small>Adicionar imagem ao grupo </small>
+          <UpdateImage></UpdateImage>
+        </div>
       </div>
       <div className="ButtonCreateGroup">
         <Button id="btn-verify" name="Confirm" btnColor="success" />
