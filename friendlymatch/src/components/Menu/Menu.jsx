@@ -13,6 +13,7 @@ import {
   Divider,
   List,
 } from "@material-ui/core";
+import { withFirebase } from "../../services";
 
 const useStyles = makeStyles({
   list: {
@@ -35,7 +36,7 @@ const useStylesAvatar = makeStyles((theme) => ({
   },
 }));
 
-export default function TemporaryDrawer() {
+function TemporaryDrawer({firebase}) {
   const classes = useStyles();
   const classesAvatar = useStylesAvatar();
   const [state, setState] = React.useState({
@@ -85,13 +86,16 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {["Support", "Settings", "Privacy & terms", "Logout"].map(
+        {["Support", "Settings", "Privacy & terms"].map(
           (text, index) => (
             <ListItem button key={text}>
               <ListItemText primary={text} />
             </ListItem>
           )
         )}
+        <ListItem button key="Logout" onClick={()=>firebase.auth().signOut()}>
+          <ListItemText primary="Logout"/>
+        </ListItem>
       </List>
     </div>
   );
@@ -115,3 +119,5 @@ export default function TemporaryDrawer() {
     </div>
   );
 }
+
+export default withFirebase(TemporaryDrawer)

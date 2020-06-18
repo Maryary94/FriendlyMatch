@@ -48,22 +48,30 @@ import Field from "./views/API/Field";
 import NearMe from "./views/API/NearMe";
 import { withFirebase } from "./services";
 
-function App({firebase, history}) {
+function App({firebase, location, history}) {
   let authUser = useRef();
 
   useEffect(()=>{
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         firebase.database().ref("Users").child(user.uid).on("value", (snapshot)=>{
-            if(!snapshot.exists())
-              history.push("/SignUp");
-            else
-              history.push("/MyGames");
-            });
-          authUser.current = user;
+          // var userData = snapshot.val();
+          // console.log("dados do user", userData, userData.birthday);
+          if(!snapshot.exists())
+            history.push("/SignUp");
+          else if(location.pathname === "/Login" || location.pathname === "/SignUp")
+              history.push("/MyGroups");
+        });
+        authUser.current = user;
+
+        // firebase.database().ref("Users").child(user.uid).child("birthday").on("value", (snapshot)=>{
+        //   console.log("birthday", snapshot.val());
+        // });
+      } else {
+        history.push("/Login");
       }
     });
-  }, [firebase, history])
+  }, [firebase, history, location.pathname]);
 
 
   return (
