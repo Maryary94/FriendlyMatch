@@ -1,0 +1,10 @@
+.CreateGroupName {
+  margin-top: 10%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.ButtonCreateGroup {
+  margin-top: 20%;
+}

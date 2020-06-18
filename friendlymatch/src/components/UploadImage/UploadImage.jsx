@@ -29,7 +29,6 @@ export default function UploadButtons() {
         <Button variant="contained" color="primary" component="span">
           Upload Image
         </Button>
-        Add an image to the Group
       </label>
       <input
         accept="image/*"
