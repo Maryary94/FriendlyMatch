@@ -2,3 +2,12 @@
   display: flex;
   justify-content: space-between;
 }
+.GridTitle {
+  margin-top: 5%;
+}
+.CreateGroup {
+  height: 100%;
+}
+.listGroups {
+  margin-top: 5%;
+}
