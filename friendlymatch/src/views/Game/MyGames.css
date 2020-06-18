@@ -1,0 +1,11 @@
+.rowMenu {
+  display: flex;
+  justify-content: space-between;
+}
+.GridTitleGame {
+  margin-top: 5%;
+}
+
+.listGame {
+  margin-top: 5%;
+}

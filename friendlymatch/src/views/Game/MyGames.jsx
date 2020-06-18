@@ -3,7 +3,6 @@ import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import NavBar from "../../components/Form/ButtonGroup/Dashboard/menuDashboard";
 import ProfilePicture from "../../components/ProfilePicture/ProfilePicture";
-import AddIcon from "@material-ui/icons/Add";
 import { Button, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./MyGames.css";
@@ -29,7 +28,7 @@ export default function MyGames() {
       <NavBar />
 
       <div className={classes.root}>
-        <div className="GridTitle">
+        <div className="GridTitleGame">
           <Grid container spacing={3}>
             <Grid item xs={6} sm={3}>
               <Paper className={classes.paper}>
@@ -38,7 +37,7 @@ export default function MyGames() {
             </Grid>
           </Grid>
           {/* Fazer uma lista das groups que estão na base de dados*/}
-          <div className="listGroups">
+          <div className="listGame">
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <b>Name of the game </b>
