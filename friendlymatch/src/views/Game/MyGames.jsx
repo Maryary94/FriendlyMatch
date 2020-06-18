@@ -41,7 +41,7 @@ export default function MyGames() {
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <b>Name of the game </b>
-                <p> Name of the Group: </p>
+                <p> Name of the group: </p>
                 <Button variant="contained" className="CreateGroup">
                   visit
                 </Button>
