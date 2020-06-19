@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function MyGroups({firebase}) {
+function MyGroups({firebase, history}) {
   const classes = useStyles();
   const currentUser = useRef();
   const players = useRef();
@@ -62,7 +62,7 @@ function MyGroups({firebase}) {
               </Paper>
             </Grid>
             <Grid item xs={6} sm={3}>
-              <Button variant="contained" className="CreateGroup">
+              <Button variant="contained" className="CreateGroup" onClick={()=>history.push("/CreateGroup")}>
                 Create group <AddIcon></AddIcon>
               </Button>
             </Grid>
