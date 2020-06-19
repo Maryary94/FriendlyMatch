@@ -4,7 +4,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
-
+import "./Settings.css";
 const options = [
   { name: "Edit Group", link: "/login" },
   { name: "Manage Group", link: "/login" },
@@ -49,7 +49,7 @@ export default function LongMenu() {
         }}
       >
         {options.map((option) => (
-          <Link key={option.name} to={option.link}>
+          <Link key={option.name} to={option.link} className="SettingsColors">
             <MenuItem
               selected={option.name === "Edit Group"}
               onClick={handleClose}

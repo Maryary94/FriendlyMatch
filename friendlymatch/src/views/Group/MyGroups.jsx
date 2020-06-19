@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import NavBar from "../../components/Form/ButtonGroup/Dashboard/menuDashboard";
-import ProfilePicture from "../../components/ProfilePicture/ProfilePicture";
+import ProfilePicture from "../../img/ProfilePicture/ProfilePicture";
 import AddIcon from "@material-ui/icons/Add";
 import { Button, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./MyGroups.css";
 import { withFirebase } from "../../services";
-import { useEffect } from "react";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -94,7 +95,9 @@ function MyGroups({ firebase, history }) {
                     }
                   </p>
                   <Button variant="contained" className="CreateGroup">
-                    visit
+                    <Link to="/Games" className="CreateGroupColor">
+                      visit
+                    </Link>
                   </Button>
                 </Paper>
               </Grid>

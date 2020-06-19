@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import "./ProfilePicture.css";
+import "./GroupPicture.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +20,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ImageAvatars() {
+export default function GroupPicture() {
   const classes = useStyles();
 
   return (
-    <div className="profileImage">
+    <div className="GroupImage">
       <div className={classes.root}>
-        <Avatar alt="Your name" src="./coffee.jpg" className={classes.large} />
+        <Avatar
+          alt="Your Group"
+          variant="rounded"
+          src="./Fut.png"
+          className={classes.large}
+        />
       </div>
     </div>
   );

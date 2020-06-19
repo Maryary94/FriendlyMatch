@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup, Divider } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -29,7 +30,7 @@ export default function BasicButtonGroup() {
             <Link to="/Games">Games</Link>
           </Button>
           <Button>
-            <Link to="/GroupMembers">Members</Link>Members
+            <Link to="/GroupMembers">Members</Link>
           </Button>
           <Button>
             <Link to="/Ranking">Ranking</Link>
