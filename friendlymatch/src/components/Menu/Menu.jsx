@@ -67,7 +67,7 @@ export default function TemporaryDrawer() {
     >
       <List>
         <div className={classesAvatar.root}>
-          <Avatar alt="" src="/coffee.jpg" className={classesAvatar.large} />
+          <Avatar alt="R" src="/coffee.jpg" className={classesAvatar.large} />
         </div>
         {["Edit Profile"].map((text, index) => (
           <ListItem button key={text}>
