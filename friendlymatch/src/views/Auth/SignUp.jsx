@@ -6,7 +6,6 @@ import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import Header from "../../components/Header/Header";
 import { withFirebase } from "../../services";
-import { useEffect } from "react";
 
 function SignUp({firebase}) {
   let firstName, lastName, phone, birthday, position;
@@ -52,11 +51,6 @@ function SignUp({firebase}) {
       label: "Defesa Central",
     },
   ];
-
-
-  useEffect(()=>{
-    console.log(firebase.auth().currentUser);
-  }, [firebase])
 
   const handleSignUp = (e) => {
     e.preventDefault();
