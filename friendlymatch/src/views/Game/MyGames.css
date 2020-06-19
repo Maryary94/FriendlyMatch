@@ -9,3 +9,6 @@
 .listGame {
   margin-top: 5%;
 }
+.MuiGrid-container {
+  justify-content: center;
+}

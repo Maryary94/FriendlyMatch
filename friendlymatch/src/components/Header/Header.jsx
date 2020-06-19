@@ -1,5 +1,5 @@
 import React from "react";
-
+// import { Link } from "react-router-dom";
 import "./Header.css";
 
 export default function Header(props) {
@@ -7,9 +7,13 @@ export default function Header(props) {
     <>
       <div className="header">
         {props.children}
-        <i className={`${props.iconLeft} iconFontAwesome `}></i>
-        <span className="text">{props.title}</span>
-        <i className={`${props.iconRight} iconFontAwesome `}></i>
+        {props.title ? (
+          <>
+            <i className={`${props.iconLeft} iconFontAwesome `}></i>
+            <span className="text">{props.title}</span>
+            <i className={`${props.iconRight} iconFontAwesome `}></i>
+          </>
+        ) : null}
       </div>
     </>
   );

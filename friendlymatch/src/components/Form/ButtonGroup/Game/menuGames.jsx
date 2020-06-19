@@ -25,8 +25,12 @@ export default function BasicButtonGroup() {
           color="primary"
           aria-label="text primary button group"
         >
-          <Button>Info</Button>
-          <Button>Players</Button>
+          <Button>
+            <Link to="/Info">Info</Link>
+          </Button>
+          <Button>
+            <Link to="/InGamePlayers">Players</Link>
+          </Button>
         </ButtonGroup>
       </div>
       <Divider />
