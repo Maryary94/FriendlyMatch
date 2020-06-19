@@ -4,7 +4,10 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-const options = ["Manage Group", "Leave Group"];
+const options = [
+  { name: "Manage Group", link: "/login" },
+  { name: "Leave Group", link: "/login" },
+];
 
 const ITEM_HEIGHT = 48;
 
@@ -44,13 +47,14 @@ export default function LongMenu() {
         }}
       >
         {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Manage Group"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
+          <Link key={option.name} to={option.link}>
+            <MenuItem
+              selected={option.name === "Edit Group"}
+              onClick={handleClose}
+            >
+              {option.name}
+            </MenuItem>
+          </Link>
         ))}
       </Menu>
     </div>

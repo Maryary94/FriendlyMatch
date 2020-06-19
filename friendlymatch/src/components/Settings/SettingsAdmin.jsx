@@ -3,8 +3,13 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
+import { Link } from "react-router-dom";
 
-const options = ["Edit Group", "Manage Group", "Leave Group"];
+const options = [
+  { name: "Edit Group", link: "/login" },
+  { name: "Manage Group", link: "/login" },
+  { name: "Leave Group", link: "/login" },
+];
 
 const ITEM_HEIGHT = 48;
 
@@ -44,13 +49,14 @@ export default function LongMenu() {
         }}
       >
         {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Edit Group"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
+          <Link key={option.name} to={option.link}>
+            <MenuItem
+              selected={option.name === "Edit Group"}
+              onClick={handleClose}
+            >
+              {option.name}
+            </MenuItem>
+          </Link>
         ))}
       </Menu>
     </div>

@@ -4,7 +4,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-const options = ["Edit Profile"];
+const options = [{ name: "Edit Profile", link: "/Profile" }];
 
 const ITEM_HEIGHT = 48;
 
@@ -44,13 +44,14 @@ export default function LongMenu() {
         }}
       >
         {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Edit Profile"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
+          <Link key={option.name} to={option.link}>
+            <MenuItem
+              selected={option.name === "Edit Group"}
+              onClick={handleClose}
+            >
+              {option.name}
+            </MenuItem>
+          </Link>
         ))}
       </Menu>
     </div>
