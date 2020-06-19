@@ -15,11 +15,11 @@ function Login({firebase, history}) {
   const recaptchaVerifier = useRef();
   const _confirmationResult = useRef();
   const [displayForm, setDisplayForm] = useState("phone");
-  let phoneNumber = "";
+  let phoneNumber = useRef();
   const [verificationCode, setVerificationCode] = useState("");
 
   const handleLogin = useCallback(() => {
-    firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaVerifier.current).then(function (confirmationResult) {
+    firebase.auth().signInWithPhoneNumber("+351"+phoneNumber.current, recaptchaVerifier.current).then(function (confirmationResult) {
       // SMS sent. Prompt user to type the code from the message, then sign the
       // user in with confirmationResult.confirm(code).
       _confirmationResult.current = confirmationResult;
@@ -50,7 +50,7 @@ function Login({firebase, history}) {
     });
 
     recaptchaVerifier.current.render().then(function(widgetId) {
-      recaptchaVerifier.current.reset(widgetId);
+      //recaptchaVerifier.current.reset(widgetId);
     });
 
   }, [firebase.auth.RecaptchaVerifier, handleLogin]);
@@ -65,7 +65,7 @@ function Login({firebase, history}) {
           alt="Logo FriendlyMatch"
         />
 
-        <Input id="phone" type="text" placeholder="Phone" onChange={e => phoneNumber = e.target.value} />
+        <Input id="phone" type="text" placeholder="Phone" onChange={e => phoneNumber.current = e.target.value} />
 
         <Button id="sign-in-button" name="Enter" btnColor="success" />
         <p className="terms">
