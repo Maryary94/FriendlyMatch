@@ -6,7 +6,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
 import "./Settings.css";
 
-const options = [{ name: "Edit Profile", link: "/Profile" }];
+const options = [{ name: "Edit Profile", link: "/EditProfile" }];
 
 const ITEM_HEIGHT = 48;
 

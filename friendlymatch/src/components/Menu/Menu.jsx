@@ -56,60 +56,68 @@ function TemporaryDrawer({ firebase }) {
   };
 
   const list = (anchor) => (
-    <div
-      className={
-        (classes.list,
-        {
-          [classes.fullList]: anchor === "top" || anchor === "bottom",
-        })
-      }
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        <div className={classesAvatar.root}>
-          <Avatar alt="R" src="/coffee.jpg" className={classesAvatar.large} />
-        </div>
-        {[{ name: "Edit Profile", link: "/EditProfile" }].map((text, index) => (
-          <Link to={text.link}>
-            <ListItem button key={text.name}>
-              <ListItemText primary={text.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {[
-          { name: "Home", link: "/MyGroups" },
-          { name: "Notifications", link: "/Notifications" },
-          { name: "Events", link: "/Calendar" },
-        ].map((text, index) => (
-          <Link to={text.link}>
-            <ListItem button key={text.name}>
-              <ListItemText primary={text.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {[
-          { name: "Support", link: "/CreateFeedback" },
-          { name: "Settings", link: "/Settings" },
-          { name: "Privacy & terms", link: "/TermsAndPrivacy" },
-        ].map((text, index) => (
-          <Link to={text.link}>
-            <ListItem button key={text.name}>
-              <ListItemText primary={text.name} />
-            </ListItem>
-          </Link>
-        ))}
-        <ListItem button key="Logout" onClick={() => firebase.auth().signOut()}>
-          <ListItemText primary="Logout" />
-        </ListItem>
-      </List>
+    <div className="ColorMenu">
+      <div
+        className={
+          (classes.list,
+          {
+            [classes.fullList]: anchor === "top" || anchor === "bottom",
+          })
+        }
+        role="presentation"
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
+      >
+        <List>
+          <div className={classesAvatar.root}>
+            <Avatar alt="R" src="/coffee.jpg" className={classesAvatar.large} />
+          </div>
+          {[{ name: "Edit Profile", link: "/EditProfile" }].map(
+            (text, index) => (
+              <Link to={text.link}>
+                <ListItem button key={text.name}>
+                  <ListItemText primary={text.name} />
+                </ListItem>
+              </Link>
+            )
+          )}
+        </List>
+        <Divider />
+        <List>
+          {[
+            { name: "Home", link: "/MyGroups" },
+            { name: "Notifications", link: "/Notifications" },
+            { name: "Events", link: "/Calendar" },
+          ].map((text, index) => (
+            <Link to={text.link}>
+              <ListItem button key={text.name}>
+                <ListItemText primary={text.name} />
+              </ListItem>
+            </Link>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {[
+            { name: "Support", link: "/CreateFeedback" },
+            { name: "Settings", link: "/Settings" },
+            { name: "Privacy & terms", link: "/TermsAndPrivacy" },
+          ].map((text, index) => (
+            <Link to={text.link}>
+              <ListItem button key={text.name}>
+                <ListItemText primary={text.name} />
+              </ListItem>
+            </Link>
+          ))}
+          <ListItem
+            button
+            key="Logout"
+            onClick={() => firebase.auth().signOut()}
+          >
+            <ListItemText primary="Logout" />
+          </ListItem>
+        </List>
+      </div>
     </div>
   );
 

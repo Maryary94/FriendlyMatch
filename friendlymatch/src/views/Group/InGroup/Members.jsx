@@ -4,7 +4,7 @@ import Menu from "../../../components/Menu/Menu";
 import SettingsAdmin from "../../../components/Settings/SettingsAdmin";
 import NavBar from "../../../components/Form/ButtonGroup/Group/menuGroup";
 import GroupPicture from "../../../img/GroupPicture/GroupPicture";
-import { Divider, Button } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid } from "@material-ui/core";
 

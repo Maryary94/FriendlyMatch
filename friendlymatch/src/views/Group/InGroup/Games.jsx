@@ -4,10 +4,11 @@ import Menu from "../../../components/Menu/Menu";
 import SettingsAdmin from "../../../components/Settings/SettingsAdmin";
 import NavBar from "../../../components/Form/ButtonGroup/Group/menuGroup";
 import GroupPicture from "../../../img/GroupPicture/GroupPicture";
-import { Divider, Button } from "@material-ui/core";
+import { Divider, Button, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Grid } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
+import "./Games.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +34,6 @@ export default function Games() {
             <Grid item xs={6} sm={3}>
               <Paper className={classes.paper}>
                 <b>Group Name: </b>
-
                 <p>Admin: </p>
               </Paper>
             </Grid>
@@ -59,7 +59,9 @@ export default function Games() {
             </Grid>
             <Grid item xs={6} sm={3}>
               <Button variant="contained" className="CreateGroup">
-                Create a game <AddIcon></AddIcon>
+                <Link to="/CreateGame" className="GrupoColor">
+                  Create game <AddIcon></AddIcon>
+                </Link>
               </Button>
             </Grid>
           </Grid>

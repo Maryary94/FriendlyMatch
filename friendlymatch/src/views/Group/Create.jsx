@@ -38,7 +38,7 @@ function Create({ firebase, history }) {
       <Header // iconLeft={"fas fa-times"}
       // title={"Create New Group"}
       >
-        <Close link="/MyGames" />
+        <Close link="/MyGroups" />
       </Header>
       <div className="CreateGroupName">
         <p>
