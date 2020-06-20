@@ -24,8 +24,8 @@ export default function CreateGame() {
   const classes = useStyles();
   const Field = [
     {
-      value: "10 ",
-      label: " 10",
+      value: "10",
+      label: "10",
     },
     {
       value: "12",
@@ -96,7 +96,7 @@ export default function CreateGame() {
           />
 
           <div className="divHorizontal">
-            <Input type="text" id="a" placeholder="Date" disabled={true} />
+            <Input type="text" id="date" placeholder="Date" disabled={true} />
             <Input
               type="date"
               id="date"
@@ -104,13 +104,58 @@ export default function CreateGame() {
             />
           </div>
           <div className="divHorizontal">
-            <Input type="text" id="a" placeholder="Time" disabled={true} />
+            <Input
+              type="text"
+              id="timeGame"
+              placeholder="Time of the Game"
+              disabled={true}
+            />
+            <Input
+              type="time"
+              id="timeOfTheGame"
+              onChange={(e) => (birthday = e.target.value)}
+            />
+          </div>
+          <div className="divHorizontal">
+            <Input
+              type="text"
+              id="date"
+              placeholder="Deadline"
+              disabled={true}
+            />
+            <Input
+              type="date"
+              id="date"
+              onChange={(e) => (birthday = e.target.value)}
+            />
+          </div>
+          <div className="divHorizontal">
+            <Input
+              type="text"
+              id="a"
+              placeholder="The end time to apply"
+              disabled={true}
+            />
+            <Input
+              type="time"
+              id="timeToApply"
+              onChange={(e) => (birthday = e.target.value)}
+            />
+          </div>
+          <div className="divHorizontal">
+            <Input
+              type="text"
+              id="timeNotification"
+              placeholder="Notification"
+              disabled={true}
+            />
             <Input
               type="time"
               id="time"
               onChange={(e) => (birthday = e.target.value)}
             />
           </div>
+
           <div className="ButtonGame">
             <TextField
               id="select-players"

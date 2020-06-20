@@ -7,7 +7,7 @@ import Button from "../../components/Form/Button/Button";
 import Header from "../../components/Header/Header";
 import { withFirebase } from "../../services";
 
-function SignUp({firebase}) {
+function SignUp({ firebase }) {
   let firstName, lastName, phone, birthday, position;
   const positionField = [
     {
@@ -55,16 +55,23 @@ function SignUp({firebase}) {
   const handleSignUp = (e) => {
     e.preventDefault();
     console.log("handleSignUp", firebase.auth().currentUser);
-    firebase.database().ref("Users").child(firebase.auth().currentUser.uid).update({
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
-      birthday: birthday,
-      position: position,
-    }, (result)=>{
-      console.log("result", result);
-    })
-  }
+    firebase
+      .database()
+      .ref("Users")
+      .child(firebase.auth().currentUser.uid)
+      .update(
+        {
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone,
+          birthday: birthday,
+          position: position,
+        },
+        (result) => {
+          console.log("result", result);
+        }
+      );
+  };
 
   return (
     <>
@@ -78,9 +85,24 @@ function SignUp({firebase}) {
 
       <div className="formContainerSignUp">
         <form className="container" action="#" onSubmit={handleSignUp}>
-          <Input type="text" id="firstName" placeholder="First Name" onChange={e => firstName = e.target.value} />
-          <Input type="text" id="lastName" placeholder="Last Name" onChange={e => lastName = e.target.value} />
-          <Input type="text" id="phone" placeholder="Phone Number" onChange={e => phone = e.target.value} />
+          <Input
+            type="text"
+            id="firstName"
+            placeholder="First Name"
+            onChange={(e) => (firstName = e.target.value)}
+          />
+          <Input
+            type="text"
+            id="lastName"
+            placeholder="Last Name"
+            onChange={(e) => (lastName = e.target.value)}
+          />
+          <Input
+            type="text"
+            id="phone"
+            placeholder="Phone Number"
+            onChange={(e) => (phone = e.target.value)}
+          />
           <div className="divHorizontal">
             <Input
               type="text"
@@ -88,15 +110,19 @@ function SignUp({firebase}) {
               placeholder="Date of Birth"
               disabled={true}
             />
-            <Input type="date" id="birthday" onChange={e => birthday = e.target.value}/>
+            <Input
+              type="date"
+              id="birthday"
+              onChange={(e) => (birthday = e.target.value)}
+            />
           </div>
           <div className="selectPosicao">
             <TextField
               id="select-posicao"
               select
-              label="   "
-              onChange={e => position = e.target.value}
-              helperText="Escolha o posição que deseja jogar"
+              label="Choose your position "
+              variant="outlined"
+              onChange={(e) => (position = e.target.value)}
             >
               {positionField.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
