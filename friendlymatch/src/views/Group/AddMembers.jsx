@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../../components/Header/Header";
+import Close from "../../components/Icons/Close/Close";
+
 import Button from "../../components/Form/Button/Button";
 import "./AddMembers.css";
 import {
@@ -14,11 +16,9 @@ import { Divider } from "@material-ui/core";
 export default function AddMembers() {
   return (
     <>
-      <Header
-        iconLeft={"fas fa-times"}
-        title={"Create New Group"}
-        iconRight={"fas fa-check"}
-      ></Header>
+      <Header title={"Create New Group"}>
+        <Close link="/GroupMembers" />
+      </Header>
       <div className="AddPlayersGroup">
         <div>
           <p>

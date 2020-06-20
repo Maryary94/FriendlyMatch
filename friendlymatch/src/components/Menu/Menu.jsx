@@ -1,6 +1,7 @@
 import React from "react";
 import "./Menu.css";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 // import InboxIcon from "@material-ui/icons/MoveToInbox";
 // import MailIcon from "@material-ui/icons/Mail";
@@ -36,7 +37,7 @@ const useStylesAvatar = makeStyles((theme) => ({
   },
 }));
 
-function TemporaryDrawer({firebase}) {
+function TemporaryDrawer({ firebase }) {
   const classes = useStyles();
   const classesAvatar = useStylesAvatar();
   const [state, setState] = React.useState({
@@ -70,31 +71,43 @@ function TemporaryDrawer({firebase}) {
         <div className={classesAvatar.root}>
           <Avatar alt="R" src="/coffee.jpg" className={classesAvatar.large} />
         </div>
-        {["Edit Profile"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["Notifications", "Events"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["Support", "Settings", "Privacy & terms"].map(
-          (text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
+        {[{ name: "Edit Profile", link: "/EditProfile" }].map((text, index) => (
+          <Link to={text.link}>
+            <ListItem button key={text.name}>
+              <ListItemText primary={text.name} />
             </ListItem>
-          )
-        )}
-        <ListItem button key="Logout" onClick={()=>firebase.auth().signOut()}>
-          <ListItemText primary="Logout"/>
+          </Link>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {[
+          { name: "Home", link: "/MyGroups" },
+          { name: "Notifications", link: "/Notifications" },
+          { name: "Events", link: "/Calendar" },
+        ].map((text, index) => (
+          <Link to={text.link}>
+            <ListItem button key={text.name}>
+              <ListItemText primary={text.name} />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {[
+          { name: "Support", link: "/CreateFeedback" },
+          { name: "Settings", link: "/Settings" },
+          { name: "Privacy & terms", link: "/TermsAndPrivacy" },
+        ].map((text, index) => (
+          <Link to={text.link}>
+            <ListItem button key={text.name}>
+              <ListItemText primary={text.name} />
+            </ListItem>
+          </Link>
+        ))}
+        <ListItem button key="Logout" onClick={() => firebase.auth().signOut()}>
+          <ListItemText primary="Logout" />
         </ListItem>
       </List>
     </div>
@@ -120,4 +133,4 @@ function TemporaryDrawer({firebase}) {
   );
 }
 
-export default withFirebase(TemporaryDrawer)
+export default withFirebase(TemporaryDrawer);
