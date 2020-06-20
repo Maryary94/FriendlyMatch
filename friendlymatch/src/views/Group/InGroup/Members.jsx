@@ -58,16 +58,12 @@ export default function Members() {
             </Grid>
             <Grid item xs={6} sm={3} />
           </Grid>
-          {/* Fazer uma lista das groups que estão na base de dados*/}
+          {/* Fazer uma lista dos membros que estão na base de dados*/}
           <div className="listGame">
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
-                <b>Name of the game </b>
-
-                <p> Name of the group: </p>
-                <Button variant="contained" className="CreateGroup">
-                  visit
-                </Button>
+                <b>Name: </b>
+                <p> Position: </p>
               </Paper>
             </Grid>
           </div>
