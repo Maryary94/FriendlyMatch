@@ -48,20 +48,26 @@ import Field from "./views/API/Field";
 import NearMe from "./views/API/NearMe";
 import { withFirebase } from "./services";
 
-function App({firebase, location, history}) {
+function App({ firebase, location, history }) {
   let authUser = useRef();
 
-  useEffect(()=>{
+  useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        firebase.database().ref("Users").child(user.uid).on("value", (snapshot)=>{
-          // var userData = snapshot.val();
-          // console.log("dados do user", userData, userData.birthday);
-          if(!snapshot.exists())
-            history.push("/SignUp");
-          else if(location.pathname === "/Login" || location.pathname === "/SignUp")
+        firebase
+          .database()
+          .ref("Users")
+          .child(user.uid)
+          .on("value", (snapshot) => {
+            // var userData = snapshot.val();
+            // console.log("dados do user", userData, userData.birthday);
+            if (!snapshot.exists()) history.push("/SignUp");
+            else if (
+              location.pathname === "/Login" ||
+              location.pathname === "/SignUp"
+            )
               history.push("/MyGroups");
-        });
+          });
         authUser.current = user;
 
         // firebase.database().ref("Users").child(user.uid).child("birthday").on("value", (snapshot)=>{
@@ -72,7 +78,6 @@ function App({firebase, location, history}) {
       }
     });
   }, [firebase, history, location.pathname]);
-
 
   return (
     <Switch>
@@ -109,7 +114,7 @@ function App({firebase, location, history}) {
       {/* In Game */}
       <Route path="/Info" exact render={(props) => <Info {...props} />} />
       <Route
-        path="/Payments"
+        path="/WinningTeam"
         exact
         render={(props) => <Payments {...props} />}
       />
@@ -119,7 +124,7 @@ function App({firebase, location, history}) {
         render={(props) => <InGamePlayers {...props} />}
       />
       <Route
-        path="/Statistics"
+        path="/Teams"
         exact
         render={(props) => <Statistics {...props} />}
       />

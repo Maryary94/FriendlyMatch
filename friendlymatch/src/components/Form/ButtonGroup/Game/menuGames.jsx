@@ -27,11 +27,19 @@ export default function BasicButtonGroup() {
           aria-label="text primary button group"
         >
           <Button>
-            <Link to="/Info">Info</Link>
+            <Link to="/Info"> Info </Link>
           </Button>
           <Button>
-            <Link to="/InGamePlayers">Players</Link>
+            <Link to="/InGamePlayers"> Players </Link>
           </Button>
+          <Button>
+            <Link to="/Teams"> teams </Link>
+          </Button>
+          {/* 
+            <Button>
+            <Link to="/WinningTeam">Players</Link>
+            </Button>
+          */}
         </ButtonGroup>
       </div>
       <Divider />

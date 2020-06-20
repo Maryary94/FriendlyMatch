@@ -1,6 +1,6 @@
 import React from "react";
 import "./Evaluation.css";
-//import images from "../../img/images.png";
+import { Link } from "react-router-dom";
 import {
   Radio,
   RadioGroup,
@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 
 import Button from "../../components/Form/Button/Button";
-// import Input from "../../components/Form/Input/Input";
+
 import Header from "../../components/Header/Header";
 
 export default function Evaluation() {
@@ -26,16 +26,6 @@ export default function Evaluation() {
       <div className="formContainerEvaluation">
         <div className="container">
           <div className="row">
-            {/*
-            <div className="colImagem">
-              <img
-                className="Player"
-                src={images}
-                alt="player "
-                class="img-thumbnail"
-              />
-            </div>
-            */}
             <FormControl component="fieldset" className="FormWidth">
               <FormLabel component="legend">
                 Statistics (pode ser o nome do atleta)
@@ -59,12 +49,14 @@ export default function Evaluation() {
         </div>
 
         <form className="container">
-          <Button
-            className="buttonThanks"
-            name="Send"
-            type="submit"
-            btnColor="success"
-          />
+          <Link to="/Thanks" className="GrupoColor">
+            <Button
+              className="buttonThanks"
+              name="Send"
+              type="submit"
+              btnColor="success"
+            />
+          </Link>
         </form>
       </div>
     </>
