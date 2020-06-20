@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateGame() {
+export default function CreateGame(firebase) {
   const classes = useStyles();
   const Field = [
     {
@@ -61,6 +61,27 @@ export default function CreateGame() {
     },
   ];
   let gameName, location, price, birthday, playersWanted;
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    console.log("handleSignUp", firebase.auth().currentUser);
+    firebase
+      .database()
+      .ref("Users")
+      .child(firebase.auth().currentUser.uid)
+      .update(
+        {
+          gameName: gameName,
+          location: location,
+          price: price,
+          playersWanted: playersWanted,
+
+          birthday: birthday,
+        },
+        (result) => {
+          console.log("result", result);
+        }
+      );
+  };
   return (
     <>
       <Header>
@@ -81,7 +102,7 @@ export default function CreateGame() {
         </div>
       </div>
       <div className="formContainerSignUp">
-        <form className="container">
+        <form className="container" action="#" onSubmit={handleSignUp}>
           <Input
             type="text"
             id="GameName"

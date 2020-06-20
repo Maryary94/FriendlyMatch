@@ -74,9 +74,11 @@ export default function Games() {
                   <small> Date: </small>
                   <small>| Time: </small>
                 </p>
-                <Button variant="contained" className="CreateGroup">
-                  visit
-                </Button>
+                <Link to="/Info" className="GrupoColor">
+                  <Button variant="contained" className="CreateGroup">
+                    visit
+                  </Button>
+                </Link>
               </Paper>
             </Grid>
           </div>

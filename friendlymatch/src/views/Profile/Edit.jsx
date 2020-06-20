@@ -7,7 +7,7 @@ import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import "./Edit.css";
 import { Link } from "react-router-dom";
-import { withFirebase } from "../../services";
+// import { withFirebase } from "../../services";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Edit(firebase) {
   const classes = useStyles();
-  let firstName, lastName, phone, birthday, position;
+  let firstName, lastName, phone, birthday, position, height, tShirt, age;
   const positionField = [
     {
       value: " Lateral Esquerdo",
@@ -77,6 +77,9 @@ export default function Edit(firebase) {
           firstName: firstName,
           lastName: lastName,
           phone: phone,
+          height: height,
+          tShirt: tShirt,
+          age: age,
           birthday: birthday,
           position: position,
         },
@@ -119,19 +122,19 @@ export default function Edit(firebase) {
             type="number"
             id="height"
             placeholder="Height"
-            onChange={(e) => (lastName = e.target.value)}
+            onChange={(e) => (height = e.target.value)}
           />
           <Input
             type="number"
-            id="t-shirt"
+            id="tShirt"
             placeholder="T-shirt Number"
-            onChange={(e) => (phone = e.target.value)}
+            onChange={(e) => (tShirt = e.target.value)}
           />
           <Input
             type="number"
             id="age"
             placeholder="Age"
-            onChange={(e) => (phone = e.target.value)}
+            onChange={(e) => (age = e.target.value)}
           />
           <div className="divHorizontal">
             <Input
