@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Close from "../../components/Icons/Close/Close";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -23,6 +23,9 @@ import {
   Twitter,
   Link,
 } from "@material-ui/icons";
+import { withFirebase } from "../../services";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,19 +64,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
-
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -83,18 +73,49 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function AddMembers() {
+function AddMembers({firebase, history}) {
+  const { groupId } = useParams();
   const classes = useStyles();
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
 
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
+  const [players, setPlayers] = useState({});
+  const [members, setMembers] = useState([]);
+  useEffect(()=>{
+    firebase
+      .database()
+      .ref("Users")
+      .on("value", (snapshot)=>{
+        setPlayers(snapshot.val());
+        firebase
+          .database()
+          .ref("Groups")
+          .child(groupId)
+          .child("members")
+          .on("value", (snapshot)=>{
+            setMembers(snapshot.val());
+          });
+      });
+  }, [firebase, groupId]);
+
+  const handleConfirm = () => {
+    console.log("confirm");
+    firebase
+      .database()
+      .ref("Groups")
+      .child(groupId)
+      .child("members")
+      .set(members, (error)=>{
+        if(error)
+          console.error(error);
+        else
+          history.push("/GroupMembers/"+groupId);
+      })
   };
+
   return (
     <>
       <Header>
-        <Close link="/GroupMembers" />
+        <Close link={"/GroupMembers/"+groupId} />
       </Header>
 
       <div className={classes.root}>
@@ -131,33 +152,35 @@ export default function AddMembers() {
             labelId="mutiple-members"
             id="mutiple-members"
             multiple
-            value={personName}
-            onChange={handleChange}
+            value={members}
+            onChange={e => setMembers(e.target.value)}
             input={<Input id="select-multiple-chip" />}
             renderValue={(selected) => (
               <div className={classes.chips}>
                 {selected.map((value) => (
-                  <Chip key={value} label={value} className={classes.chip} />
+                  <Chip key={value} label={players[value].firstName+" "+players[value].lastName} className={classes.chip} />
                 ))}
               </div>
             )}
             MenuProps={MenuProps}
           >
-            {names.map((name) => (
+            {Object.keys(players).map((playerKey) => (
               <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, personName, theme)}
+                key={playerKey}
+                value={playerKey}
+                style={getStyles(playerKey, members, theme)}
               >
-                {name}
+                {players[playerKey].firstName+" "+players[playerKey].lastName}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
       </div>
       <div className="ContinueButtonGroup">
-        <Button name="Add Members" type="submit" btnColor="success" />
+        <Button name="Add Members" type="submit" btnColor="success" onClick={handleConfirm}/>
       </div>
     </>
   );
 }
+
+export default withFirebase(AddMembers);
