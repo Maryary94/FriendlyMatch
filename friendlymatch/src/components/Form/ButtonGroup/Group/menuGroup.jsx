@@ -34,7 +34,7 @@ export default function BasicButtonGroup() {
             <Link to={"/GroupMembers/"+groupId}>Members</Link>
           </Button>
           <Button>
-            <Link to="/Ranking">Ranking</Link>
+            <Link to={"/Ranking/"+groupId}>Ranking</Link>
           </Button>
         </ButtonGroup>
       </div>

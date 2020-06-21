@@ -158,7 +158,7 @@ function App({ firebase, location, history }) {
         exact
         render={(props) => <GroupMembers {...props} />}
       />
-      <Route path="/Ranking" exact render={(props) => <Ranking {...props} />} />
+      <Route path="/Ranking/:groupId" exact render={(props) => <Ranking {...props} />} />
 
       {/* Notifications */}
       <Route

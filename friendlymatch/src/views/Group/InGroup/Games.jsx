@@ -26,6 +26,7 @@ function Games({firebase}) {
   const {groupId} = useParams();
   const players = useRef();
   const [group, setGroup] = useState({});
+  const [games, setGames] = useState({});
 
   useEffect(() => {
     firebase
@@ -39,6 +40,13 @@ function Games({firebase}) {
           .ref("Groups")
           .child(groupId)
           .on("value", (snapshot) => setGroup(snapshot.val()));
+        
+        firebase
+          .database()
+          .ref("Games")
+          .orderByChild("groupId").equalTo(groupId)
+          .on("value", (snapshot) => setGames(snapshot.val()));
+        
       });
   }, [firebase, groupId]);
 
@@ -87,22 +95,24 @@ function Games({firebase}) {
             </Grid>
           </Grid>
           {/* Fazer uma lista das groups que estão na base de dados*/}
-          <div className="listGame">
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <b>Name of the game </b>
-                <p>
-                  <small> Date: </small>
-                  <small>| Time: </small>
-                </p>
-                <Link to="/Info" className="GrupoColor">
-                  <Button variant="contained" className="CreateGroup">
-                    visit
-                  </Button>
-                </Link>
-              </Paper>
-            </Grid>
-          </div>
+          {Object.keys(games).map((gameId) => (
+            <div className="listGame">
+              <Grid item xs={12} sm={6}>
+                <Paper className={classes.paper}>
+                  <b>{games[gameId].gameName}</b>
+                  <p>
+                    <small> Date: {games[gameId].date}</small>
+                    <small>| Time: {games[gameId].timeOfTheGame}</small>
+                  </p>
+                  <Link to="/Info" className="GrupoColor">
+                    <Button variant="contained" className="CreateGroup">
+                      visit
+                    </Button>
+                  </Link>
+                </Paper>
+              </Grid>
+            </div>
+          ))}
         </div>
       </div>
     </>

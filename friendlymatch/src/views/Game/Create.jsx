@@ -8,6 +8,7 @@ import "./Create.css";
 import { Link, useParams } from "react-router-dom";
 
 import LeftArrow from "../../components/Icons/LeftArrow/LeftArrow";
+import { withFirebase } from "../../services";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateGame(firebase) {
+function CreateGame({firebase, history}) {
   const {groupId} = useParams();
   const classes = useStyles();
   const Field = [
@@ -61,25 +62,35 @@ export default function CreateGame(firebase) {
       label: "26",
     },
   ];
-  let gameName, location, price, birthday, playersWanted;
-  const handleSignUp = (e) => {
+  let gameName, location, date, timeOfTheGame, deadline, timeToApply, timeNotification, playersWanted, price;
+
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSignUp", firebase.auth().currentUser);
+    console.log("handleSubmit", firebase.auth().currentUser);
     firebase
       .database()
-      .ref("Users")
-      .child(firebase.auth().currentUser.uid)
-      .update(
+      .ref("Games")
+      .push(
         {
+          groupId: groupId,
           gameName: gameName,
           location: location,
-          price: price,
+          date: date,
+          timeOfTheGame: timeOfTheGame,
+          deadline: deadline,
+          timeToApply: timeToApply,
+          timeNotification: timeNotification,
           playersWanted: playersWanted,
-
-          birthday: birthday,
+          price: price,
         },
-        (result) => {
-          console.log("result", result);
+        (error) => {
+          if (error) {
+            console.error(error);
+          } else {
+            history.goBack();
+          }
         }
       );
   };
@@ -103,7 +114,7 @@ export default function CreateGame(firebase) {
         </div>
       </div>
       <div className="formContainerSignUp">
-        <form className="container" action="#" onSubmit={handleSignUp}>
+        <form className="container" action="#" onSubmit={handleSubmit}>
           <Input
             type="text"
             id="GameName"
@@ -122,7 +133,7 @@ export default function CreateGame(firebase) {
             <Input
               type="date"
               id="date"
-              onChange={(e) => (birthday = e.target.value)}
+              onChange={(e) => (date = e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -135,7 +146,7 @@ export default function CreateGame(firebase) {
             <Input
               type="time"
               id="timeOfTheGame"
-              onChange={(e) => (birthday = e.target.value)}
+              onChange={(e) => (timeOfTheGame = e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -148,7 +159,7 @@ export default function CreateGame(firebase) {
             <Input
               type="date"
               id="date"
-              onChange={(e) => (birthday = e.target.value)}
+              onChange={(e) => (deadline = e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -161,7 +172,7 @@ export default function CreateGame(firebase) {
             <Input
               type="time"
               id="timeToApply"
-              onChange={(e) => (birthday = e.target.value)}
+              onChange={(e) => (timeToApply = e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -174,7 +185,7 @@ export default function CreateGame(firebase) {
             <Input
               type="time"
               id="time"
-              onChange={(e) => (birthday = e.target.value)}
+              onChange={(e) => (timeNotification = e.target.value)}
             />
           </div>
 
@@ -200,12 +211,12 @@ export default function CreateGame(firebase) {
             onChange={(e) => (price = e.target.value)}
           />
           <div className="ButtonGame">
-            <Link to={"/Games/"+groupId} className="GrupoColor">
-              <Button name="Create Game" type="submit" btnColor="success" />
-            </Link>
+            <Button name="Create Game" type="submit" btnColor="success" />
           </div>
         </form>
       </div>
     </>
   );
 }
+
+export default withFirebase(CreateGame);
