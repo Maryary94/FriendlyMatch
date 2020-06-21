@@ -86,7 +86,7 @@ function Members({ firebase }) {
             </Grid>
             <Grid item xs={6} sm={3}>
               <Button variant="contained" className="CreateGroup">
-                <Link to={"/AddMembers /" + groupId} className="GrupoColor">
+                <Link to={"/AddMembers/" + groupId} className="GrupoColor">
                   Add Members <AddIcon></AddIcon>
                 </Link>
               </Button>

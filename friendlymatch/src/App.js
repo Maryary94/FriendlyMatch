@@ -133,7 +133,7 @@ function App({ firebase, location, history }) {
 
       {/* Group */}
       <Route
-        path="/AddMembers"
+        path="/AddMembers/:groupId"
         exact
         render={(props) => <AddMembers {...props} />}
       />
