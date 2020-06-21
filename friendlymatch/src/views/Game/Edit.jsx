@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function EditGame({ firebase, history }) {
-  const { groupId, gameId } = useParams();
+  const { gameId } = useParams();
   const classes = useStyles();
   const Field = [
     {
@@ -123,7 +123,7 @@ function EditGame({ firebase, history }) {
   return (
     <>
       <Header>
-        <LeftArrow link={"/Games/" + groupId} />
+        <LeftArrow link={"/Info/" + gameId} />
       </Header>
       <div className={classes.root}>
         <div className="GridTitleGame">
