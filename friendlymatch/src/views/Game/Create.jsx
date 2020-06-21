@@ -5,7 +5,7 @@ import { Paper, Grid, TextField, MenuItem } from "@material-ui/core";
 import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import "./Create.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import LeftArrow from "../../components/Icons/LeftArrow/LeftArrow";
 import { withFirebase } from "../../services";
@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CreateGame({firebase, history}) {
-  const {groupId} = useParams();
+function CreateGame({ firebase, history }) {
+  const { groupId } = useParams();
   const classes = useStyles();
   const Field = [
     {
@@ -62,9 +62,15 @@ function CreateGame({firebase, history}) {
       label: "26",
     },
   ];
-  let gameName, location, date, timeOfTheGame, deadline, timeToApply, timeNotification, playersWanted, price;
-
-
+  let gameName,
+    location,
+    date,
+    timeOfTheGame,
+    deadline,
+    limitTimeToApply,
+    timeNotification,
+    playersWanted,
+    price;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,7 +86,7 @@ function CreateGame({firebase, history}) {
           date: date,
           timeOfTheGame: timeOfTheGame,
           deadline: deadline,
-          timeToApply: timeToApply,
+          limitTimeToApply: limitTimeToApply,
           timeNotification: timeNotification,
           playersWanted: playersWanted,
           price: price,
@@ -97,7 +103,7 @@ function CreateGame({firebase, history}) {
   return (
     <>
       <Header>
-        <LeftArrow link={"/Games/"+groupId} />
+        <LeftArrow link={"/Games/" + groupId} />
       </Header>
       <div className={classes.root}>
         <div className="GridTitleGame">
@@ -171,8 +177,8 @@ function CreateGame({firebase, history}) {
             />
             <Input
               type="time"
-              id="timeToApply"
-              onChange={(e) => (timeToApply = e.target.value)}
+              id="limitTimeToApply"
+              onChange={(e) => (limitTimeToApply = e.target.value)}
             />
           </div>
           <div className="divHorizontal">
