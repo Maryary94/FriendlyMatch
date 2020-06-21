@@ -8,7 +8,7 @@ import "./Settings.css";
 
 const options = [
   { name: "Manage Group", link: "/login" },
-  { name: "Leave Group", link: "/login" },
+  { name: "Leave Group", link: "/MyGroups" },
 ];
 
 const ITEM_HEIGHT = 48;

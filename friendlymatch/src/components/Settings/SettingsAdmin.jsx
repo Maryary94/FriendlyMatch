@@ -6,9 +6,9 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
 import "./Settings.css";
 const options = [
-  { name: "Edit Group", link: "/login" },
+  { name: "Edit Group", link: "/CreateGame" },
   { name: "Manage Group", link: "/login" },
-  { name: "Leave Group", link: "/login" },
+  { name: "Leave Group", link: "/MyGroups" },
 ];
 
 const ITEM_HEIGHT = 48;

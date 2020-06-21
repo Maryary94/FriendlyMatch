@@ -6,7 +6,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
 import "./Settings.css";
 
-const options = [{ name: "Leave Group", link: "/login" }];
+const options = [{ name: "Leave Group", link: "/MyGroups" }];
 
 const ITEM_HEIGHT = 48;
 

@@ -85,9 +85,11 @@ function TemporaryDrawer({ firebase }) {
         <Divider />
         <List>
           {[
-            { name: "Home", link: "/MyGroups" },
-            { name: "Notifications", link: "/Notifications" },
-            { name: "Events", link: "/Calendar" },
+            { name: "My Group", link: "/MyGroups" },
+            { name: "My Games", link: "/MyGames" },
+            { name: "Profile", link: "/Profile" },
+            // { name: "Notifications", link: "/Notifications" },
+            // { name: "Events", link: "/Calendar" },
           ].map((text, index) => (
             <Link to={text.link}>
               <ListItem button key={text.name}>
