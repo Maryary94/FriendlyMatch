@@ -30,9 +30,9 @@ export default function PrivacyAndTerms() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
-                <h1>
+                <h2>
                   <b>Privacy & Terms </b>
-                </h1>
+                </h2>
               </Paper>
             </Grid>
           </Grid>
