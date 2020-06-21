@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../../../components/Header/Header";
 import Menu from "../../../components/Menu/Menu";
 import SettingsAdmin from "../../../components/Settings/SettingsAdmin";
@@ -6,9 +6,10 @@ import NavBar from "../../../components/Form/ButtonGroup/Group/menuGroup";
 import GroupPicture from "../../../img/GroupPicture/GroupPicture";
 import { Divider, Button, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import "./Games.css";
+import { withFirebase } from "../../../services";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +21,27 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-export default function Games() {
+function Games({firebase}) {
   const classes = useStyles();
+  const {groupId} = useParams();
+  const players = useRef();
+  const [group, setGroup] = useState({});
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("Users")
+      .once("value")
+      .then((snapshot) => {
+        players.current = snapshot.val();
+        firebase
+          .database()
+          .ref("Groups")
+          .child(groupId)
+          .on("value", (snapshot) => setGroup(snapshot.val()));
+      });
+  }, [firebase, groupId]);
+
   return (
     <>
       <Header>
@@ -33,8 +53,9 @@ export default function Games() {
           <Grid container spacing={3}>
             <Grid item xs={6} sm={3}>
               <Paper className={classes.paper}>
-                <b>Group Name: </b>
-                <p>Admin: </p>
+                <b>Group Name: {group.name}</b>
+
+                <p>Admin: {group.administrators?players.current[group.administrators[0]].firstName:""}</p>
               </Paper>
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -59,7 +80,7 @@ export default function Games() {
             </Grid>
             <Grid item xs={6} sm={3}>
               <Button variant="contained" className="CreateGroup">
-                <Link to="/CreateGame" className="GrupoColor">
+                <Link to={"/CreateGame/"+groupId} className="GrupoColor">
                   Create game <AddIcon></AddIcon>
                 </Link>
               </Button>
@@ -87,3 +108,5 @@ export default function Games() {
     </>
   );
 }
+
+export default withFirebase(Games);

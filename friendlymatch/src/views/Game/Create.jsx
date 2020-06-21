@@ -5,7 +5,7 @@ import { Paper, Grid, TextField, MenuItem } from "@material-ui/core";
 import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import "./Create.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import LeftArrow from "../../components/Icons/LeftArrow/LeftArrow";
 
@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CreateGame(firebase) {
+  const {groupId} = useParams();
   const classes = useStyles();
   const Field = [
     {
@@ -85,7 +86,7 @@ export default function CreateGame(firebase) {
   return (
     <>
       <Header>
-        <LeftArrow link="/Games" />
+        <LeftArrow link={"/Games/"+groupId} />
       </Header>
       <div className={classes.root}>
         <div className="GridTitleGame">
@@ -199,7 +200,7 @@ export default function CreateGame(firebase) {
             onChange={(e) => (price = e.target.value)}
           />
           <div className="ButtonGame">
-            <Link to="/Games" className="GrupoColor">
+            <Link to={"/Games/"+groupId} className="GrupoColor">
               <Button name="Create Game" type="submit" btnColor="success" />
             </Link>
           </div>

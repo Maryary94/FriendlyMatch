@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 function MyGroups({ firebase, history }) {
   const classes = useStyles();
-  const currentUser = useRef();
   const players = useRef();
   const [playerGroups, setPlayerGroups] = useState({});
 
@@ -35,16 +34,14 @@ function MyGroups({ firebase, history }) {
       .then((snapshot) => {
         players.current = snapshot.val();
         firebase
-          .database()
-          .ref("Groups")
-          .on("value", (snapshot) => {
-            currentUser.current = firebase.auth().currentUser;
-            console.log(currentUser.current);
+        .database()
+        .ref("Groups")
+        .on("value", (snapshot) => {
             let allGroups = snapshot.val();
             setPlayerGroups(
               Object.keys(allGroups)
                 .filter((group) =>
-                  allGroups[group].members.includes(currentUser.current.uid)
+                  allGroups[group].members.includes(firebase.auth().currentUser.uid)
                 )
                 .reduce((obj, key) => {
                   obj[key] = allGroups[key];
@@ -82,19 +79,19 @@ function MyGroups({ firebase, history }) {
             </Grid>
           </Grid>
           {/* Fazer uma lista das groups que estão na base de dados*/}
-          {Object.keys(playerGroups).map((groupKey) => (
-            <div className="listGroups" key={groupKey}>
+          {Object.keys(playerGroups).map((groupId) => (
+            <div className="listGroups" key={groupId}>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
-                  <b> {playerGroups[groupKey].name} </b>
+                  <b> {playerGroups[groupId].name} </b>
                   <p>
                     Administrador:
                     {
-                      players.current[playerGroups[groupKey].administrators[0]]
+                      players.current[playerGroups[groupId].administrators[0]]
                         .firstName
                     }
                   </p>
-                  <Link to="/Games" className="CreateGroupColor">
+                  <Link to={"/Games/"+groupId} className="CreateGroupColor">
                     <Button variant="contained" className="CreateGroup">
                       visit
                     </Button>

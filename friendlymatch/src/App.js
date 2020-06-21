@@ -100,7 +100,7 @@ function App({ firebase, location, history }) {
 
       {/* Game */}
       <Route
-        path="/CreateGame"
+        path="/CreateGame/:groupId"
         exact
         render={(props) => <CreateGame {...props} />}
       />
@@ -152,9 +152,9 @@ function App({ firebase, location, history }) {
       />
 
       {/* InGroup */}
-      <Route path="/Games" exact render={(props) => <Games {...props} />} />
+      <Route path="/Games/:groupId" exact render={(props) => <Games {...props} />} />
       <Route
-        path="/GroupMembers"
+        path="/GroupMembers/:groupId"
         exact
         render={(props) => <GroupMembers {...props} />}
       />
