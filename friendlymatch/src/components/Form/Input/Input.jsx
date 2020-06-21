@@ -14,6 +14,7 @@ export default function Input(props) {
           aria-describedby="emailHelp"
           disabled={props.disabled}
           onChange={props.onChange}
+          value={props.value}
         />
         <small id="emailHelp" className="form-text text-muted">
           {props.smallText}

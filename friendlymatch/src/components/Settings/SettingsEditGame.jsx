@@ -3,14 +3,15 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Settings.css";
 
-const options = [{ name: "Edit Game", link: "/CreateGame" }];
 
 const ITEM_HEIGHT = 48;
 
 export default function SettingsForEditGame() {
+  const {gameId} = useParams();
+  const options = [{ name: "Edit Game", link: "/EditGame/"+gameId }];
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 

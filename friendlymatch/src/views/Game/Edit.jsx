@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid, TextField, MenuItem } from "@material-ui/core";
@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 
 import LeftArrow from "../../components/Icons/LeftArrow/LeftArrow";
 import { withFirebase } from "../../services";
+import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CreateGame({ firebase, history }) {
-  const { groupId } = useParams();
+function EditGame({ firebase, history }) {
+  const { groupId, gameId } = useParams();
   const classes = useStyles();
   const Field = [
     {
@@ -62,15 +63,34 @@ function CreateGame({ firebase, history }) {
       label: "26",
     },
   ];
-  let gameName,
-    location,
-    date,
-    timeOfTheGame,
-    deadline,
-    limitTimeToApply,
-    timeNotification,
-    playersWanted,
-    price;
+  const [gameName, setGameName] = useState();
+  const [location, setLocation] = useState();
+  const [date, setDate] = useState();
+  const [timeOfTheGame, setTimeOfTheGame] = useState();
+  const [deadline, setDeadline] = useState();
+  const [limitTimeToApply, setLimitTimeToApply] = useState();
+  const [timeNotification, setTimeNotification] = useState();
+  const [playersWanted, setPlayersWanted] = useState();
+  const [price, setPrice] = useState();
+
+  useEffect(()=>{
+    firebase
+      .database()
+      .ref("Games")
+      .child(gameId)
+      .on("value", (snapshot)=>{
+        let game = snapshot.val();
+        setGameName(game.gameName);
+        setLocation(game.location);
+        setDate(game.date);
+        setTimeOfTheGame(game.timeOfTheGame);
+        setDeadline(game.deadline);
+        setLimitTimeToApply(game.limitTimeToApply);
+        setTimeNotification(game.timeNotification);
+        setPlayersWanted(game.playersWanted);
+        setPrice(game.price);
+      });
+  }, [firebase, gameId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,9 +98,9 @@ function CreateGame({ firebase, history }) {
     firebase
       .database()
       .ref("Games")
-      .push(
+      .child(gameId)
+      .update(
         {
-          groupId: groupId,
           gameName: gameName,
           location: location,
           date: date,
@@ -110,7 +130,7 @@ function CreateGame({ firebase, history }) {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
-                <b>Create new Game </b>
+                <b>Edit Game </b>
                 <p>
                   <small>Details</small>
                 </p>
@@ -125,13 +145,15 @@ function CreateGame({ firebase, history }) {
             type="text"
             id="GameName"
             placeholder="Game Name"
-            onChange={(e) => (gameName = e.target.value)}
+            value={gameName}
+            onChange={(e) => setGameName(e.target.value)}
           />
           <Input
             type="text"
             id="Location"
             placeholder="Name or Location"
-            onChange={(e) => (location = e.target.value)}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
 
           <div className="divHorizontal">
@@ -139,7 +161,8 @@ function CreateGame({ firebase, history }) {
             <Input
               type="date"
               id="date"
-              onChange={(e) => (date = e.target.value)}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -152,7 +175,8 @@ function CreateGame({ firebase, history }) {
             <Input
               type="time"
               id="timeOfTheGame"
-              onChange={(e) => (timeOfTheGame = e.target.value)}
+              value={timeOfTheGame}
+              onChange={(e) => setTimeOfTheGame(e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -165,7 +189,8 @@ function CreateGame({ firebase, history }) {
             <Input
               type="date"
               id="date"
-              onChange={(e) => (deadline = e.target.value)}
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -178,7 +203,8 @@ function CreateGame({ firebase, history }) {
             <Input
               type="time"
               id="limitTimeToApply"
-              onChange={(e) => (limitTimeToApply = e.target.value)}
+              value={limitTimeToApply}
+              onChange={(e) => setLimitTimeToApply(e.target.value)}
             />
           </div>
           <div className="divHorizontal">
@@ -191,7 +217,8 @@ function CreateGame({ firebase, history }) {
             <Input
               type="time"
               id="time"
-              onChange={(e) => (timeNotification = e.target.value)}
+              value={timeNotification}
+              onChange={(e) => setTimeNotification(e.target.value)}
             />
           </div>
 
@@ -200,7 +227,8 @@ function CreateGame({ firebase, history }) {
               id="select-players"
               select
               label="Players Wanted"
-              onChange={(e) => (playersWanted = e.target.value)}
+              value={playersWanted}
+              onChange={(e) => setPlayersWanted(e.target.value)}
               variant="outlined"
             >
               {Field.map((option) => (
@@ -214,10 +242,11 @@ function CreateGame({ firebase, history }) {
             type="number"
             id="Price"
             placeholder="Total Price of the game"
-            onChange={(e) => (price = e.target.value)}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
           <div className="ButtonGame">
-            <Button name="Create Game" type="submit" btnColor="success" />
+            <Button name="Edit Game" type="submit" btnColor="success" />
           </div>
         </form>
       </div>
@@ -225,4 +254,4 @@ function CreateGame({ firebase, history }) {
   );
 }
 
-export default withFirebase(CreateGame);
+export default withFirebase(EditGame);

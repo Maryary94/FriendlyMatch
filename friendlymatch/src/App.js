@@ -11,6 +11,7 @@ import CreateFeedback from "./views/Feedback/Create";
 
 // Game
 import CreateGame from "./views/Game/Create";
+import EditGame from "./views/Game/Edit";
 import MyGames from "./views/Game/MyGames";
 import GameAddPlayers from "./views/Game/AddPlayers";
 // In Game
@@ -22,6 +23,7 @@ import Statistics from "./views/Game/InGame/Statistics";
 import AddMembers from "./views/Group/AddMembers";
 import AddPhotoGroup from "./views/Group/AddPhoto";
 import CreateGroup from "./views/Group/Create";
+import EditGroup from "./views/Group/Edit";
 import MyGroups from "./views/Group/MyGroups";
 // InGroup
 import Games from "./views/Group/InGroup/Games";
@@ -99,6 +101,11 @@ function App({ firebase, location, history }) {
         exact
         render={(props) => <CreateGame {...props} />}
       />
+      <Route
+        path="/EditGame/:gameId"
+        exact
+        render={(props) => <EditGame {...props} />}
+      />
       <Route path="/MyGames" exact render={(props) => <MyGames {...props} />} />
       <Route
         path="/GameAddPlayers"
@@ -139,6 +146,11 @@ function App({ firebase, location, history }) {
         path="/CreateGroup"
         exact
         render={(props) => <CreateGroup {...props} />}
+      />
+      <Route
+        path="/EditGroup/:groupId"
+        exact
+        render={(props) => <EditGroup {...props} />}
       />
       <Route
         path="/MyGroups"

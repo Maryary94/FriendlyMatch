@@ -3,17 +3,18 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import SettingsIcon from "@material-ui/icons/Settings";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Settings.css";
-const options = [
-  { name: "Edit Group", link: "/CreateGame" },
-  { name: "Manage Group", link: "/login" },
-  { name: "Leave Group", link: "/MyGroups" },
-];
 
 const ITEM_HEIGHT = 48;
 
 export default function SettingsForAdmin() {
+  const {groupId} = useParams();
+  const options = [
+    { name: "Edit Group", link: "/EditGroup/"+groupId },
+    { name: "Manage Group", link: "/MyGroups" },
+    { name: "Leave Group", link: "/MyGroups" },
+  ];
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
