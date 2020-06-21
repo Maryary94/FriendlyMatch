@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Payments() {
+export default function WinningTeam() {
   return <div></div>;
 }
