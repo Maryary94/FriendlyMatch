@@ -6,8 +6,14 @@
 .WaysToSendInvitationsGroup {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 10%;
+  margin-top: 8%;
+  margin-bottom: 8%;
 }
 .ContinueButtonGroup {
   margin-top: 20%;
+}
+.MembersNames {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
 }
