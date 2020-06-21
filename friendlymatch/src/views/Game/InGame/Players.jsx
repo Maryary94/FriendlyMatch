@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../../components/Header/Header";
 import Menu from "../../../components/Menu/Menu";
-
+import AddIcon from "@material-ui/icons/Add";
 import NavBar from "../../../components/Form/ButtonGroup/Game/menuGames";
 import GroupPicture from "../../../img/GroupPicture/GroupPicture";
-import { Divider, Paper, Grid } from "@material-ui/core";
+import { Divider, Paper, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import "./Players.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { withFirebase } from "../../../services";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-function InGamePlayers({firebase}) {
+function InGamePlayers({ firebase }) {
   const classes = useStyles();
   const { gameId } = useParams();
   const [game, setGame] = useState({});
@@ -64,10 +64,17 @@ function InGamePlayers({firebase}) {
       <div className={classes.root}>
         <div className="GridTitleGame">
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={3}>
               <Paper className={classes.paper}>
                 <b>Players in the Game </b>
               </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Button variant="contained" className="CreateGroup">
+                <Link to={"/CreateGame/"} className="GrupoColor">
+                  Add New Players <AddIcon></AddIcon>
+                </Link>
+              </Button>
             </Grid>
           </Grid>
 

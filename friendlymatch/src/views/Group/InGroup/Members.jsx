@@ -6,10 +6,11 @@ import NavBar from "../../../components/Form/ButtonGroup/Group/menuGroup";
 import GroupPicture from "../../../img/GroupPicture/GroupPicture";
 import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Grid } from "@material-ui/core";
+import { Paper, Grid, Button } from "@material-ui/core";
 import { useEffect } from "react";
 import { withFirebase } from "../../../services";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-function Members({firebase}) {
+function Members({ firebase }) {
   const classes = useStyles();
   let { groupId } = useParams();
   const players = useRef();
@@ -55,7 +56,12 @@ function Members({firebase}) {
               <Paper className={classes.paper}>
                 <b>Group Name: {group.name}</b>
 
-                <p>Admin: {group.administrators?players.current[group.administrators[0]].firstName:""}</p>
+                <p>
+                  Admin:{" "}
+                  {group.administrators
+                    ? players.current[group.administrators[0]].firstName
+                    : ""}
+                </p>
               </Paper>
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -78,20 +84,31 @@ function Members({firebase}) {
                 <b>Members </b>
               </Paper>
             </Grid>
-            <Grid item xs={6} sm={3} />
+            <Grid item xs={6} sm={3}>
+              <Button variant="contained" className="CreateGroup">
+                <Link to={"/AddMembers /" + groupId} className="GrupoColor">
+                  Add Members <AddIcon></AddIcon>
+                </Link>
+              </Button>
+            </Grid>
           </Grid>
           {/* Fazer uma lista dos membros que estão na base de dados*/}
-          {Object.keys(group.members||{}).map((playerKey) => (
+          {Object.keys(group.members || {}).map((playerKey) => (
             <div className="listGame" key={playerKey}>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
-                  <b>Name: { players.current[group.members[playerKey]].firstName }</b>
-                  <p> Position: { players.current[group.members[playerKey]].position }</p>
+                  <b>
+                    Name: {players.current[group.members[playerKey]].firstName}
+                  </b>
+                  <p>
+                    {" "}
+                    Position:{" "}
+                    {players.current[group.members[playerKey]].position}
+                  </p>
                 </Paper>
               </Grid>
             </div>
           ))}
-          
         </div>
       </div>
     </>
