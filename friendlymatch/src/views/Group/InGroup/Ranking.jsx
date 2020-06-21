@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 function Ranking({firebase}) {
   const classes = useStyles();
   let { groupId } = useParams();
-  const players = useRef();
+  const [players, setPlayers] = useState({});
   const [group, setGroup] = useState({});
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Ranking({firebase}) {
       .ref("Users")
       .once("value")
       .then((snapshot) => {
-        players.current = snapshot.val();
+        setPlayers(snapshot.val());
         firebase
           .database()
           .ref("Groups")
@@ -56,7 +56,7 @@ function Ranking({firebase}) {
               <Paper className={classes.paper}>
                 <b>Group Name: {group.name}</b>
 
-                <p>Admin: {group.administrators?players.current[group.administrators[0]].firstName:""}</p>
+                <p>Admin: {group.administrators?players[group.administrators[0]].firstName:""}</p>
               </Paper>
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -83,14 +83,17 @@ function Ranking({firebase}) {
             </Grid>
           </Grid>
           {/* Fazer uma lista dos membros que estão na base de dados*/}
-          <div className="listGame">
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <b>Name: </b>
-                <p>Points: </p>
-              </Paper>
-            </Grid>
-          </div>
+          {(group.members||[]).map(playerKey=>(
+
+            <div className="listGame" key={playerKey}>
+              <Grid item xs={12} sm={6}>
+                <Paper className={classes.paper}>
+                  <b>Name: {players[playerKey].firstName+" "+players[playerKey].lastName}</b>
+                  <p>Points: </p>
+                </Paper>
+              </Grid>
+            </div>
+          ))}
         </div>
       </div>
     </>
