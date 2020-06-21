@@ -88,8 +88,6 @@ function TemporaryDrawer({ firebase }) {
             { name: "My Group", link: "/MyGroups" },
             { name: "My Games", link: "/MyGames" },
             { name: "Profile", link: "/Profile" },
-            // { name: "Notifications", link: "/Notifications" },
-            // { name: "Events", link: "/Calendar" },
           ].map((text, index) => (
             <Link to={text.link}>
               <ListItem button key={text.name}>
@@ -102,7 +100,7 @@ function TemporaryDrawer({ firebase }) {
         <List>
           {[
             { name: "Support", link: "/CreateFeedback" },
-            { name: "Settings", link: "/Settings" },
+
             { name: "Privacy & terms", link: "/TermsAndPrivacy" },
           ].map((text, index) => (
             <Link to={text.link}>
