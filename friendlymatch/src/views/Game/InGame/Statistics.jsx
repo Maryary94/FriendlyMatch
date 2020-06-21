@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../../components/Header/Header";
 import Menu from "../../../components/Menu/Menu";
 
@@ -8,6 +8,8 @@ import { Divider, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import "./Statistics.css";
+import { useParams } from "react-router-dom";
+import { withFirebase } from "../../../services";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,8 +21,19 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-export default function Teams() {
+function Teams({firebase}) {
   const classes = useStyles();
+  const { gameId } = useParams();
+  const [game, setGame] = useState({});
+
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("Games")
+      .child(gameId)
+      .on("value", (snapshot) => setGame(snapshot.val()));
+  }, [firebase, gameId]);
+  
   return (
     <>
       <Header>
@@ -32,7 +45,7 @@ export default function Teams() {
             <Grid item xs={6} sm={3}>
               <Paper className={classes.paper}>
                 <b>Game Name: </b>
-                <p>(Name) </p>
+                <p>{game.gameName}</p>
               </Paper>
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -102,3 +115,5 @@ export default function Teams() {
     </>
   );
 }
+
+export default withFirebase(Teams);

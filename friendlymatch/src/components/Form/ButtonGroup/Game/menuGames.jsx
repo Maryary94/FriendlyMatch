@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup, Divider } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BasicButtonGroup() {
   const classes = useStyles();
+  const {gameId} = useParams();
 
   return (
     <>
@@ -27,13 +28,13 @@ export default function BasicButtonGroup() {
           aria-label="text primary button group"
         >
           <Button>
-            <Link to="/Info"> Info </Link>
+            <Link to={"/Info/"+gameId}> Info </Link>
           </Button>
           <Button>
-            <Link to="/InGamePlayers"> Players </Link>
+            <Link to={"/InGamePlayers/"+gameId}> Players </Link>
           </Button>
           <Button>
-            <Link to="/Teams"> teams </Link>
+            <Link to={"/Teams/"+gameId}> teams </Link>
           </Button>
           {/* 
             <Button>

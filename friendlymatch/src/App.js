@@ -107,19 +107,19 @@ function App({ firebase, location, history }) {
       />
 
       {/* In Game */}
-      <Route path="/Info" exact render={(props) => <Info {...props} />} />
+      <Route path="/Info/:gameId" exact render={(props) => <Info {...props} />} />
       <Route
         path="/WinningTeam"
         exact
         render={(props) => <Payments {...props} />}
       />
       <Route
-        path="/InGamePlayers"
+        path="/InGamePlayers/:gameId"
         exact
         render={(props) => <InGamePlayers {...props} />}
       />
       <Route
-        path="/Teams"
+        path="/Teams/:gameId"
         exact
         render={(props) => <Statistics {...props} />}
       />

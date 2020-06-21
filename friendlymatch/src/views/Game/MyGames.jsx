@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MyGames() {
   const classes = useStyles();
+  const games = []
+
   return (
     <>
       <Header>
@@ -39,20 +41,22 @@ export default function MyGames() {
             <Grid item xs={6} sm={3}></Grid>
           </Grid>
           {/* Fazer uma lista das groups que estão na base de dados*/}
-          <div className="listGame">
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <b>Name of the game </b>
+          {Object.keys(games).map((gameId) => (
+            <div className="listGame">
+              <Grid item xs={12} sm={6}>
+                <Paper className={classes.paper}>
+                  <b>{games[gameId].gameName}</b>
 
-                <p> Name of the group: </p>
-                <Link to={"/Info"} className="CreateGroupColor">
-                  <Button variant="contained" className="CreateGroup">
-                    visit
-                  </Button>
-                </Link>
-              </Paper>
-            </Grid>
-          </div>
+                  <p> Name of the group: </p>
+                  <Link to={"/Info/"+gameId} className="CreateGroupColor">
+                    <Button variant="contained" className="CreateGroup">
+                      visit
+                    </Button>
+                  </Link>
+                </Paper>
+              </Grid>
+            </div>
+          ))}
         </div>
       </div>
     </>
