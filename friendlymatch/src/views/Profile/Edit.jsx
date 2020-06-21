@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,7 +7,7 @@ import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import "./Edit.css";
 import { Link } from "react-router-dom";
-// import { withFirebase } from "../../services";
+import { withFirebase } from "../../services";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,9 +20,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Edit(firebase) {
+function Edit({firebase, history}) {
   const classes = useStyles();
-  let firstName, lastName, phone, birthday, position, height, tShirt, age;
+
+
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [height, setHeight] = useState();
+  const [tShirt, setTShirt] = useState();
+  const [age, setAge] = useState();
+  const [birthday, setBirthday] = useState();
+  const [position, setPosition] = useState();
+
+  const currentUser = firebase.auth().currentUser;
+
+  useEffect(()=>{
+    if(currentUser)
+      firebase
+        .database()
+        .ref("Users")
+        .child(currentUser.uid)
+        .once("value", (snapshot)=>{
+          let user = snapshot.val();
+          setFirstName(user.firstName);
+          setLastName(user.lastName);
+          setHeight(user.height);
+          setTShirt(user.tShirt);
+          setAge(user.age);
+          setBirthday(user.birthday);
+          setPosition(user.position);
+        });
+  }, [firebase, currentUser]);
+
+
   const positionField = [
     {
       value: " Lateral Esquerdo",
@@ -65,9 +95,8 @@ export default function Edit(firebase) {
       label: "Defesa Central",
     },
   ];
-  const handleSignUp = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSignUp", firebase.auth().currentUser);
     firebase
       .database()
       .ref("Users")
@@ -76,7 +105,6 @@ export default function Edit(firebase) {
         {
           firstName: firstName,
           lastName: lastName,
-          phone: phone,
           height: height,
           tShirt: tShirt,
           age: age,
@@ -85,6 +113,7 @@ export default function Edit(firebase) {
         },
         (result) => {
           console.log("result", result);
+          history.push("/Profile");
         }
       );
   };
@@ -105,36 +134,41 @@ export default function Edit(firebase) {
         </div>
       </div>
       <div className="formContainerSignUp">
-        <form className="container" action="#" onSubmit={handleSignUp}>
+        <form className="container" action="#" onSubmit={handleSubmit}>
           <Input
             type="text"
             id="firstName"
             placeholder="First Name"
-            onChange={(e) => (firstName = e.target.value)}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <Input
             type="text"
             id="lastName"
             placeholder="Last Name"
-            onChange={(e) => (lastName = e.target.value)}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
           <Input
             type="number"
             id="height"
             placeholder="Height"
-            onChange={(e) => (height = e.target.value)}
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
           />
           <Input
             type="number"
             id="tShirt"
             placeholder="T-shirt Number"
-            onChange={(e) => (tShirt = e.target.value)}
+            value={tShirt}
+            onChange={(e) => setTShirt(e.target.value)}
           />
           <Input
             type="number"
             id="age"
             placeholder="Age"
-            onChange={(e) => (age = e.target.value)}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
           />
           <div className="divHorizontal">
             <Input
@@ -146,7 +180,8 @@ export default function Edit(firebase) {
             <Input
               type="date"
               id="birthday"
-              onChange={(e) => (birthday = e.target.value)}
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
             />
           </div>
           <div className="EditButtonColor">
@@ -155,7 +190,8 @@ export default function Edit(firebase) {
               select
               label="Choose your position "
               variant="outlined"
-              onChange={(e) => (position = e.target.value)}
+              // value={position}
+              onChange={(e) => setPosition(e.target.value)}
             >
               {positionField.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -165,12 +201,12 @@ export default function Edit(firebase) {
             </TextField>
           </div>
           <div className="EditButtonColor">
-            <Link to="/MyGroups">
               <Button name="Save Profile" type="submit" btnColor="success" />
-            </Link>
           </div>
         </form>
       </div>
     </>
   );
 }
+
+export default withFirebase(Edit);

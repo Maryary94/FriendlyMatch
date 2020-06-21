@@ -97,6 +97,10 @@ function InGamePlayers({ firebase }) {
                     <b>Name: </b>
                     {users[playerKey].firstName+" "+users[playerKey].lastName}
                   </p>
+                  <small>
+                    <b>T-shirt Number: </b>
+                    {users[playerKey].tShirt}
+                  </small>
                 </Paper>
               </Grid>
             </div>

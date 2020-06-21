@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
@@ -8,6 +8,8 @@ import SettingsProfile from "../../components/Settings/SettingsProfile";
 import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid } from "@material-ui/core";
 import "./Profile.css";
+import { withFirebase } from "../../services";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +22,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile() {
+function Profile({firebase}) {
   const classes = useStyles();
+  const currentUser = firebase.auth().currentUser;
+
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(()=>{
+    if(currentUser)
+      firebase
+        .database()
+        .ref("Users")
+        .child(currentUser.uid)
+        .once("value", (snapshot)=> setUserInfo(snapshot.val()));
+  }, [firebase, currentUser]);
+
   return (
     <>
       <Header>
@@ -45,13 +60,13 @@ export default function Profile() {
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <b> Profile Details </b>
-                <p> Name: </p>
-                <p> NickName: </p>
-                <p> Age: </p>
-                <p> Birthday: </p>
-                <p> Height: </p>
-                <p> T-shirt Number: </p>
-                <p> Position: </p>
+                <p> Name: {userInfo.firstName}</p>
+                <p> Last Name: {userInfo.lastName}</p>
+                <p> Age: {userInfo.age}</p>
+                <p> Birthday: {userInfo.birthday}</p>
+                <p> Height: {userInfo.height}</p>
+                <p> T-shirt Number: {userInfo.tShirt}</p>
+                <p> Position: {userInfo.position}</p>
               </Paper>
             </Grid>
           </div>
@@ -60,3 +75,5 @@ export default function Profile() {
     </>
   );
 }
+
+export default withFirebase(Profile);
