@@ -6,7 +6,6 @@ import { Paper, Grid, TextField, MenuItem } from "@material-ui/core";
 import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Form/Button/Button";
 import "./Edit.css";
-import { Link } from "react-router-dom";
 import { withFirebase } from "../../services";
 
 const useStyles = makeStyles((theme) => ({
