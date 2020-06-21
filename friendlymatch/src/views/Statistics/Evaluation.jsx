@@ -22,7 +22,7 @@ export default function Evaluation() {
   };
   return (
     <>
-      <Header title="Statistics" iconLeft={"fas fa-chevron-left"} />
+      <Header title="Evaluation" iconLeft={"fas fa-chevron-left"} />
       <div className="formContainerEvaluation">
         <div className="container">
           <div className="row">

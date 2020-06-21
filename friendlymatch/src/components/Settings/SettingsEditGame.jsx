@@ -10,7 +10,7 @@ const options = [{ name: "Edit Profile", link: "/EditProfile" }];
 
 const ITEM_HEIGHT = 48;
 
-export default function SettingsForProfile() {
+export default function SettingsForEditGame() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 

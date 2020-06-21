@@ -13,7 +13,7 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu() {
+export default function SettingsForModerators() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 

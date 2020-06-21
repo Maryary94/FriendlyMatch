@@ -7,7 +7,7 @@ import Header from "../../components/Header/Header";
 export default function Thanks() {
   return (
     <>
-      <Header title="Statistics" iconLeft={"fas fa-chevron-left"} />
+      <Header title="Evaluation" iconLeft={"fas fa-chevron-left"} />
       <div className="formContainerThanks">
         <form className="container">
           <h3 className="thankYou">Thanks for your help.</h3>

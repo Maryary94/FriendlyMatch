@@ -10,7 +10,7 @@ const options = [{ name: "Leave Group", link: "/login" }];
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu() {
+export default function SettingsForMembers() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
