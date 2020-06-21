@@ -5,7 +5,7 @@ import Input from "../../components/Form/Input/Input";
 import UpdateImage from "../../components/UploadImage/UploadImage";
 import Button from "../../components/Form/Button/Button";
 import { withFirebase } from "../../services";
-import { useRef } from "react";
+// import { useRef } from "react";
 import Close from "../../components/Icons/Close/Close";
 import { useParams } from "react-router-dom";
 
@@ -13,12 +13,12 @@ function Edit({ firebase, history }) {
   const { groupId } = useParams();
   const [groupName, setGroupName] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     firebase
       .database()
       .ref("Groups")
       .child(groupId)
-      .on("value", (snapshot)=>{
+      .on("value", (snapshot) => {
         let group = snapshot.val();
         setGroupName(group.name);
       });

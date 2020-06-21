@@ -361,7 +361,7 @@ export default function PrivacyAndTerms() {
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <h3>
-                  <b>Interpretation </b>
+                  <b>For European Union (EU) Users </b>
                 </h3>
               </Paper>
             </Grid>
@@ -370,12 +370,9 @@ export default function PrivacyAndTerms() {
 
         <div className="container">
           <p>
-            The words of which the initial letter is capitalized have meanings
-            defined under the following conditions.
-          </p>
-          <p>
-            The following definitions shall have the same meaning regardless of
-            whether they appear in singular or in plural.
+            If You are a European Union consumer, you will benefit from any
+            mandatory provisions of the law of the country in which you are
+            resident in.
           </p>
         </div>
 
@@ -384,7 +381,7 @@ export default function PrivacyAndTerms() {
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
                 <h3>
-                  <b>Interpretation </b>
+                  <b>United States Legal Compliance </b>
                 </h3>
               </Paper>
             </Grid>
@@ -393,16 +390,120 @@ export default function PrivacyAndTerms() {
 
         <div className="container">
           <p>
-            The words of which the initial letter is capitalized have meanings
-            defined under the following conditions.
-          </p>
-          <p>
-            The following definitions shall have the same meaning regardless of
-            whether they appear in singular or in plural.
+            You represent and warrant that (i) You are not located in a country
+            that is subject to the United States government embargo, or that has
+            been designated by the United States government as a "terrorist
+            supporting" country, and (ii) You are not listed on any United
+            States government list of prohibited or restricted parties.
           </p>
         </div>
+        <div className="GridTitleGame">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <h3>
+                  <b>Severability </b>
+                </h3>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
 
-        {/* Ultimo!*/}
+        <div className="container">
+          <p>
+            If any provision of these Terms is held to be unenforceable or
+            invalid, such provision will be changed and interpreted to
+            accomplish the objectives of such provision to the greatest extent
+            possible under applicable law and the remaining provisions will
+            continue in full force and effect.
+          </p>
+        </div>
+        <div className="GridTitleGame">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <h3>
+                  <b>Waiver</b>
+                </h3>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
+
+        <div className="container">
+          <p>
+            Except as provided herein, the failure to exercise a right or to
+            require performance of an obligation under this Terms shall not
+            effect a party's ability to exercise such right or require such
+            performance at any time thereafter nor shall be the waiver of a
+            breach constitute a waiver of any subsequent breach.
+          </p>
+        </div>
+        <div className="GridTitleGame">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <h3>
+                  <b>Translation Interpretation</b>
+                </h3>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
+
+        <div className="container">
+          <p>
+            These Terms and Conditions may have been translated if We have made
+            them available to You on our Service. You agree that the original
+            English text shall prevail in the case of a dispute.
+          </p>
+        </div>
+        <div className="GridTitleGame">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <h3>
+                  <b>Changes to These Terms and Conditions</b>
+                </h3>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
+
+        <div className="container">
+          <p>
+            We reserve the right, at Our sole discretion, to modify or replace
+            these Terms at any time. If a revision is material We will make
+            reasonable efforts to provide at least 30 days' notice prior to any
+            new terms taking effect. What constitutes a material change will be
+            determined at Our sole discretion.
+          </p>
+          <p>
+            By continuing to access or use Our Service after those revisions
+            become effective, You agree to be bound by the revised terms. If You
+            do not agree to the new terms, in whole or in part, please stop
+            using the website and the Service.
+          </p>
+        </div>
+        <div className="GridTitleGame">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.paper}>
+                <h3>
+                  <b>Contact Us </b>
+                </h3>
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
+
+        <div className="container">
+          <p>
+            If you have any questions about these Terms and Conditions, You can
+            contact us:
+          </p>
+          <p>- By email: friendlymatch.app@gmail.com</p>
+        </div>
       </div>
     </>
   );
