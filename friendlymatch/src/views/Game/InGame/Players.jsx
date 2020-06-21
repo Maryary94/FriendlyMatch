@@ -25,13 +25,23 @@ function InGamePlayers({ firebase }) {
   const classes = useStyles();
   const { gameId } = useParams();
   const [game, setGame] = useState({});
+  const [users, setUsers] = useState({});
 
   useEffect(() => {
     firebase
       .database()
       .ref("Games")
       .child(gameId)
-      .on("value", (snapshot) => setGame(snapshot.val()));
+      .on("value", (snapshot) => {
+        const gameSnapshot = snapshot.val();
+        firebase
+          .database()
+          .ref("Users")
+          .once("value", (snapshot) => {
+            setUsers(snapshot.val())
+            setGame(gameSnapshot);
+          });
+      });
   }, [firebase, gameId]);
 
   return (
@@ -71,27 +81,26 @@ function InGamePlayers({ firebase }) {
             </Grid>
             <Grid item xs={6} sm={3}>
               <Button variant="contained" className="CreateGroup">
-                <Link to={"/CreateGame/"} className="GrupoColor">
+                <Link to={"/GameAddPlayers/"+gameId} className="GrupoColor">
                   Add New Players <AddIcon></AddIcon>
                 </Link>
               </Button>
             </Grid>
           </Grid>
 
-          <div className="listGame">
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <p>
-                  <b>Name: </b>
-                  (data.firebase)
-                </p>
-                <small>
-                  <b>T-shirt Number: </b>
-                  (data.firebase)
-                </small>
-              </Paper>
-            </Grid>
-          </div>
+
+          {(game.players || []).map((playerKey) => (
+            <div className="listGame" key={playerKey}>
+              <Grid item xs={12} sm={6}>
+                <Paper className={classes.paper}>
+                  <p>
+                    <b>Name: </b>
+                    {users[playerKey].firstName+" "+users[playerKey].lastName}
+                  </p>
+                </Paper>
+              </Grid>
+            </div>
+          ))}
         </div>
       </div>
     </>

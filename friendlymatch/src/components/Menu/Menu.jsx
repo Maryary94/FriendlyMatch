@@ -74,7 +74,7 @@ function TemporaryDrawer({ firebase }) {
           </div>
           {[{ name: "Edit Profile", link: "/EditProfile" }].map(
             (text, index) => (
-              <Link to={text.link}>
+              <Link to={text.link} key={index}>
                 <ListItem button key={text.name}>
                   <ListItemText primary={text.name} />
                 </ListItem>
@@ -91,7 +91,7 @@ function TemporaryDrawer({ firebase }) {
             // { name: "Notifications", link: "/Notifications" },
             // { name: "Events", link: "/Calendar" },
           ].map((text, index) => (
-            <Link to={text.link}>
+            <Link to={text.link} key={index}>
               <ListItem button key={text.name}>
                 <ListItemText primary={text.name} />
               </ListItem>
@@ -105,7 +105,7 @@ function TemporaryDrawer({ firebase }) {
             { name: "Settings", link: "/Settings" },
             { name: "Privacy & terms", link: "/TermsAndPrivacy" },
           ].map((text, index) => (
-            <Link to={text.link}>
+            <Link to={text.link} key={index}>
               <ListItem button key={text.name}>
                 <ListItemText primary={text.name} />
               </ListItem>

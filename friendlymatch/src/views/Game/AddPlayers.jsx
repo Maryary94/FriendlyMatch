@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Close from "../../components/Icons/Close/Close";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -23,6 +23,8 @@ import {
   Twitter,
   Link,
 } from "@material-ui/icons";
+import { withFirebase } from "../../services";
+import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,19 +63,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
-
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -83,14 +72,62 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function AddPlayers() {
+function AddPlayers({firebase, history}) {
+  const { gameId } = useParams();
   const classes = useStyles();
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  
+  const [members, setMembers] = useState({});
+  const [players, setPlayers] = useState([]);
 
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
+  useEffect(()=>{
+    firebase
+      .database()
+      .ref("Users")
+      .on("value", (snapshot)=>{
+        const users = snapshot.val();
+        firebase
+          .database()
+          .ref("Games")
+          .child(gameId)
+          .once("value", (snapshot)=>{
+            const gameInfo = snapshot.val();
+
+            firebase
+              .database()
+              .ref("Groups")
+              .child(gameInfo.groupId)
+              .child("members")
+              .on("value", (snapshot)=>{
+                var groupMembersKeys = snapshot.val();
+                setMembers(Object.keys(users)
+                  .filter(key => groupMembersKeys.includes(key))
+                  .reduce((obj, key) => {
+                    obj[key] = users[key];
+                    return obj;
+                  }, {})
+                );
+                setPlayers(gameInfo.players||[]);
+              });
+          });
+      });
+  }, [firebase, gameId]);
+
+  const handleConfirm = () => {
+    console.log("confirm");
+    firebase
+      .database()
+      .ref("Games")
+      .child(gameId)
+      .child("players")
+      .set(players, (error)=>{
+        if(error)
+          console.error(error);
+        else
+          history.push("/InGamePlayers/"+gameId);
+      })
   };
+  
   return (
     <>
       <Header>
@@ -131,33 +168,35 @@ export default function AddPlayers() {
             labelId="mutiple-members"
             id="mutiple-members"
             multiple
-            value={personName}
-            onChange={handleChange}
+            value={players}
+            onChange={e => setPlayers(e.target.value)}
             input={<Input id="select-multiple-chip" />}
             renderValue={(selected) => (
               <div className={classes.chips}>
                 {selected.map((value) => (
-                  <Chip key={value} label={value} className={classes.chip} />
+                  <Chip key={value} label={members[value].firstName+" "+members[value].lastName} className={classes.chip} />
                 ))}
               </div>
             )}
             MenuProps={MenuProps}
           >
-            {names.map((name) => (
+            {Object.keys(members).map((playerKey) => (
               <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, personName, theme)}
+                key={playerKey}
+                value={playerKey}
+                style={getStyles(playerKey, players, theme)}
               >
-                {name}
+                {members[playerKey].firstName+" "+members[playerKey].lastName}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
       </div>
       <div className="ContinueButtonGroup">
-        <Button name="Add Players" type="submit" btnColor="success" />
+        <Button name="Add Players" type="submit" btnColor="success" onClick={handleConfirm}/>
       </div>
     </>
   );
 }
+
+export default withFirebase(AddPlayers);

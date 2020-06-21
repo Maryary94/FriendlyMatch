@@ -108,7 +108,7 @@ function App({ firebase, location, history }) {
       />
       <Route path="/MyGames" exact render={(props) => <MyGames {...props} />} />
       <Route
-        path="/GameAddPlayers"
+        path="/GameAddPlayers/:gameId"
         exact
         render={(props) => <GameAddPlayers {...props} />}
       />
