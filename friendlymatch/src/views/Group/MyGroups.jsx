@@ -94,11 +94,11 @@ function MyGroups({ firebase, history }) {
                         .firstName
                     }
                   </p>
-                  <Button variant="contained" className="CreateGroup">
-                    <Link to="/Games" className="CreateGroupColor">
+                  <Link to="/Games" className="CreateGroupColor">
+                    <Button variant="contained" className="CreateGroup">
                       visit
-                    </Link>
-                  </Button>
+                    </Button>
+                  </Link>
                 </Paper>
               </Grid>
             </div>

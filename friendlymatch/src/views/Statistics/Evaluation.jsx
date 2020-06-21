@@ -27,9 +27,7 @@ export default function Evaluation() {
         <div className="container">
           <div className="row">
             <FormControl component="fieldset" className="FormWidth">
-              <FormLabel component="legend">
-                Statistics (pode ser o nome do atleta)
-              </FormLabel>
+              <FormLabel component="legend">Name 1</FormLabel>
               <RadioGroup
                 row
                 aria-label="gender"
@@ -43,9 +41,77 @@ export default function Evaluation() {
                 <FormControlLabel value="4" control={<Radio />} label="4" />
                 <FormControlLabel value="5" control={<Radio />} label="5" />
               </RadioGroup>
+              <Divider />
+              <p></p>
+
+              <FormLabel component="legend">Name 2</FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="gender1"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="1" />
+                <FormControlLabel value="2" control={<Radio />} label="2" />
+                <FormControlLabel value="3" control={<Radio />} label="3" />
+                <FormControlLabel value="4" control={<Radio />} label="4" />
+                <FormControlLabel value="5" control={<Radio />} label="5" />
+              </RadioGroup>
+              <Divider />
+              <p></p>
+
+              <FormLabel component="legend">Name 3</FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="gender1"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="1" />
+                <FormControlLabel value="2" control={<Radio />} label="2" />
+                <FormControlLabel value="3" control={<Radio />} label="3" />
+                <FormControlLabel value="4" control={<Radio />} label="4" />
+                <FormControlLabel value="5" control={<Radio />} label="5" />
+              </RadioGroup>
+              <Divider />
+              <p></p>
+
+              <FormLabel component="legend">Name 4</FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="gender1"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="1" />
+                <FormControlLabel value="2" control={<Radio />} label="2" />
+                <FormControlLabel value="3" control={<Radio />} label="3" />
+                <FormControlLabel value="4" control={<Radio />} label="4" />
+                <FormControlLabel value="5" control={<Radio />} label="5" />
+              </RadioGroup>
+              <Divider />
+              <p></p>
+
+              <FormLabel component="legend">Name 5</FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="gender1"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="1" />
+                <FormControlLabel value="2" control={<Radio />} label="2" />
+                <FormControlLabel value="3" control={<Radio />} label="3" />
+                <FormControlLabel value="4" control={<Radio />} label="4" />
+                <FormControlLabel value="5" control={<Radio />} label="5" />
+              </RadioGroup>
+              <Divider />
             </FormControl>
           </div>
-          <Divider />
         </div>
 
         <form className="container">

@@ -75,7 +75,7 @@ export default function GameInfos() {
                   (data.firebase)
                 </p>
                 <p>
-                  <b>Times of: </b>
+                  <b>Teams of: </b>
                   (data.firebase)
                 </p>
                 <p>
