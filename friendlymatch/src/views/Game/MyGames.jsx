@@ -6,6 +6,7 @@ import ProfilePicture from "../../img/ProfilePicture/ProfilePicture";
 import { Button, Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "./MyGames.css";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -44,9 +45,11 @@ export default function MyGames() {
                 <b>Name of the game </b>
 
                 <p> Name of the group: </p>
-                <Button variant="contained" className="CreateGroup">
-                  visit
-                </Button>
+                <Link to={"/Info"} className="CreateGroupColor">
+                  <Button variant="contained" className="CreateGroup">
+                    visit
+                  </Button>
+                </Link>
               </Paper>
             </Grid>
           </div>

@@ -29,7 +29,7 @@ export default function GroupPicture() {
         <Avatar
           alt="Your Group"
           variant="rounded"
-          src="./Fut.png"
+          src="./Fut.jpg"
           className={classes.large}
         />
       </div>

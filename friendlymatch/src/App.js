@@ -8,7 +8,7 @@ import SignUp from "./views/Auth/SignUp";
 import SignIn from "./views/Auth/SignIn";
 // Feedback
 import CreateFeedback from "./views/Feedback/Create";
-import SendedFeedback from "./views/Feedback/Sended";
+
 // Game
 import CreateGame from "./views/Game/Create";
 import MyGames from "./views/Game/MyGames";
@@ -28,7 +28,7 @@ import Games from "./views/Group/InGroup/Games";
 import GroupMembers from "./views/Group/InGroup/Members";
 import Ranking from "./views/Group/InGroup/Ranking";
 // Notifications
-import Notifications from "./views/Notifications/Notifications";
+import TermsAndPrivacy from "./views/PrivacyAndTerms/PrivacyAndTerms";
 // Players
 import Players from "./views/Players/Players";
 // Profile
@@ -92,11 +92,6 @@ function App({ firebase, location, history }) {
         exact
         render={(props) => <CreateFeedback {...props} />}
       />
-      <Route
-        path="/SendedFeedback"
-        exact
-        render={(props) => <SendedFeedback {...props} />}
-      />
 
       {/* Game */}
       <Route
@@ -152,7 +147,11 @@ function App({ firebase, location, history }) {
       />
 
       {/* InGroup */}
-      <Route path="/Games/:groupId" exact render={(props) => <Games {...props} />} />
+      <Route
+        path="/Games/:groupId"
+        exact
+        render={(props) => <Games {...props} />}
+      />
       <Route
         path="/GroupMembers/:groupId"
         exact
@@ -162,9 +161,9 @@ function App({ firebase, location, history }) {
 
       {/* Notifications */}
       <Route
-        path="/Notifications"
+        path="/TermsAndPrivacy"
         exact
-        render={(props) => <Notifications {...props} />}
+        render={(props) => <TermsAndPrivacy {...props} />}
       />
 
       {/* Players */}
@@ -217,12 +216,7 @@ function App({ firebase, location, history }) {
       <Route path="/Field" exact render={(props) => <Field {...props} />} />
       <Route path="/NearMe" exact render={(props) => <NearMe {...props} />} />
 
-      <Route
-        path="/"
-        exact
-        render={(props) => <div>Isto é a apresentação do projecto (Home)</div>}
-      />
-      <Redirect to="/" />
+      <Redirect to="/MyGroups" />
     </Switch>
   );
 }

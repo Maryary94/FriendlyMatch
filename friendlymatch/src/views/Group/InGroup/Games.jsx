@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-function Games({firebase}) {
+function Games({ firebase }) {
   const classes = useStyles();
-  const {groupId} = useParams();
+  const { groupId } = useParams();
   const players = useRef();
   const [group, setGroup] = useState({});
   const [games, setGames] = useState({});
@@ -63,7 +63,12 @@ function Games({firebase}) {
               <Paper className={classes.paper}>
                 <b>Group Name: {group.name}</b>
 
-                <p>Admin: {group.administrators?players.current[group.administrators[0]].firstName:""}</p>
+                <p>
+                  Admin:{" "}
+                  {group.administrators
+                    ? players.current[group.administrators[0]].firstName
+                    : ""}
+                </p>
               </Paper>
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -88,7 +93,7 @@ function Games({firebase}) {
             </Grid>
             <Grid item xs={6} sm={3}>
               <Button variant="contained" className="CreateGroup">
-                <Link to={"/CreateGame/"+groupId} className="GrupoColor">
+                <Link to={"/CreateGame/" + groupId} className="GrupoColor">
                   Create game <AddIcon></AddIcon>
                 </Link>
               </Button>
