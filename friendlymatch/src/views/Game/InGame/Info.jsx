@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../../components/Header/Header";
 import Menu from "../../../components/Menu/Menu";
-
+import SettingsEditGame from "../../../components/Settings/SettingsEditGame";
 import NavBar from "../../../components/Form/ButtonGroup/Game/menuGames";
 import GroupPicture from "../../../img/GroupPicture/GroupPicture";
 import { Divider, Paper, Grid } from "@material-ui/core";
@@ -25,6 +25,7 @@ export default function GameInfos() {
     <>
       <Header>
         <Menu />
+        <SettingsEditGame />
       </Header>
       <div className={classes.root}>
         <div className="GridTitleGame">
