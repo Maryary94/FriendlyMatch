@@ -100,7 +100,7 @@ function Games({ firebase }) {
             </Grid>
           </Grid>
           {/* Fazer uma lista das groups que estão na base de dados*/}
-          {Object.keys(games).map((gameId) => (
+          {Object.keys(games||{}).map((gameId) => (
             <div className="listGame">
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
@@ -109,7 +109,7 @@ function Games({ firebase }) {
                     <small> Date: {games[gameId].date}</small>
                     <small>| Time: {games[gameId].timeOfTheGame}</small>
                   </p>
-                  <Link to="/Info" className="GrupoColor">
+                  <Link to={"/Info/"+gameId} className="GrupoColor">
                     <Button variant="contained" className="CreateGroup">
                       visit
                     </Button>
