@@ -1,1 +1,1 @@
-Trabalho final de Curso
+Trabalho Final de Curso
